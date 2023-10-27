@@ -21,7 +21,7 @@ public class Translator {
     @FXML
     private void translateWord(ActionEvent event) throws IOException {
         String word = inputWord.getText();
-        String translatedWord = translate("en", "vi", word);
+        String translatedWord = translate("en", "fr", word);
         System.out.println("new function: " + translatedWord);
 
         outputWord.setText(translatedWord);

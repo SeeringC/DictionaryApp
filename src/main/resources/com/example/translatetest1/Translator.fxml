@@ -32,7 +32,7 @@
       <Button layoutX="86.0" layoutY="291.0" mnemonicParsing="false" onMouseClicked="#speakword" text="Button" />
       <Button layoutX="284.0" layoutY="150.0" mnemonicParsing="false" onAction="#switchlanguage">
          <graphic>
-            <FontIcon />
+            <FontIcon iconLiteral="fab-accessible-icon" />
          </graphic>
       </Button>
    </children>

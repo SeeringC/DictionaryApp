@@ -9,6 +9,8 @@ module com.example.translatetest1 {
     requires com.almasb.fxgl.all;
     requires java.logging;
     requires jsapi;
+    requires  org.kordamp.ikonli.fontawesome5;
+    requires java.sql;
 
     opens com.example.translatetest1 to javafx.fxml;
     exports com.example.translatetest1;

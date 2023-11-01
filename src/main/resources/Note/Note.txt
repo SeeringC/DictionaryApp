@@ -1,0 +1,7 @@
+
+----------------- Modifications notes -------------------------
+- might need to modify the Singleton so fewer chars are required to call it.
+----------------- Design Pattern for project ------------------
+- use Singleton for Manager class.
+- use Factory to create Words (maybe).
+- use Change of Responsibility for use log in.

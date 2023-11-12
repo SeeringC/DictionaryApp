@@ -7,6 +7,6 @@
    <children>
       <Button layoutX="69.0" layoutY="67.0" mnemonicParsing="false" onAction="#switchToAddWord" text="Thêm từ" />
       <Button layoutX="51.0" layoutY="116.0" mnemonicParsing="false" onAction="#switchToTranslator" text="Google Translate" />
-      <Button layoutX="78.0" layoutY="175.0" mnemonicParsing="false" text="Tìm kiếm" />
+      <Button layoutX="78.0" layoutY="175.0" mnemonicParsing="false" onAction="#switchToLookUpWord" text="Tìm kiếm" />
    </children>
 </AnchorPane>

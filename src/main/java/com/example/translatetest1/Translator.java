@@ -8,6 +8,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.AnchorPane;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -18,6 +19,8 @@ import java.net.URLEncoder;
 
 public class Translator {
     @FXML
+    private AnchorPane transpane;
+    @FXML
     private Label first ;
     @FXML
     private Label second;
@@ -26,7 +29,10 @@ public class Translator {
     @FXML
     private TextArea outputWord;
 
-
+    @FXML
+    public void switchToHelloApplication(ActionEvent event) throws IOException {
+        new SwitchScene(transpane,"HelloApplication.fxml");
+    }
     @FXML
     private void switchlanguage(ActionEvent event) {
         String s = first.getText();

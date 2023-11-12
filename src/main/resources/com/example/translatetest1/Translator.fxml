@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Font?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.translatetest1.Translator">
+<AnchorPane fx:id="transpane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.translatetest1.Translator">
    <children>
       <TextField fx:id="inputWord" alignment="TOP_LEFT" layoutX="80.0" layoutY="91.0" onKeyReleased="#translateWord" prefHeight="200.0" prefWidth="194.0">
          <font>
@@ -35,5 +35,6 @@
             <FontIcon iconLiteral="fab-accessible-icon" />
          </graphic>
       </Button>
+      <Button layoutX="14.0" layoutY="1.0" mnemonicParsing="false" onAction="#switchToHelloApplication" text="Back" />
    </children>
 </AnchorPane>

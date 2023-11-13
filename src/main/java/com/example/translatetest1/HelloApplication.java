@@ -14,7 +14,7 @@ public class HelloApplication  {
         new SwitchScene(HomePane,"Translator.fxml");
     }
     public void switchToAddWord(ActionEvent event) throws IOException {
-        new SwitchScene(HomePane,"AddWord.fxml");
+        new SwitchScene(HomePane,"WordConfiguration.fxml");
     }
     public void switchToLookUpWord(ActionEvent event) throws IOException {
         new SwitchScene(HomePane,"LookUpWord.fxml");

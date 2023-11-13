@@ -18,6 +18,9 @@ import java.net.URL;
 import java.net.URLEncoder;
 
 public class Translator {
+
+    SoundManager soundM = SoundManager.getIns(SoundManager.class);
+
     @FXML
     private AnchorPane transpane;
     @FXML
@@ -57,8 +60,8 @@ public class Translator {
 
     @FXML
     private void speakWord(ActionEvent event) {
-        SoundManager.getIns(SoundManager.class).setWordToSpeak(inputWord.getText());
-        SoundManager.getIns(SoundManager.class).speakWord();
+        soundM.setWordToSpeak(inputWord.getText());
+        soundM.speakWord();
     }
 
     private static String translate(String langFrom, String langTo, String text) throws IOException {

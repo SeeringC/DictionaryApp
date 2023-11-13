@@ -62,17 +62,16 @@ public class DataBaseManager {
         System.out.println("Database connected!\n");
     }
 
-    public void initialize() throws SQLException {
+    public static void init() throws SQLException {
         try {
-
             connectToDatabase();
             // create statement
             Statement stmt = connection.createStatement();
+
             // get data from table 'student'
             ResultSet rs = stmt.executeQuery("select * from dictionary");
 
             // show data
-
             while (rs.next()) {
                 MyDictionary.dic.put(rs.getString(2), rs.getString(3));
             }

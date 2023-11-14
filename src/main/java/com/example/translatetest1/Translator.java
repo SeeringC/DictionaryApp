@@ -1,6 +1,7 @@
 package com.example.translatetest1;
 
 
+import Manager.SceneManager;
 import Manager.SoundManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -20,6 +21,7 @@ import java.net.URLEncoder;
 public class Translator {
 
     SoundManager soundM = SoundManager.getIns(SoundManager.class);
+    SceneManager sceneM = SceneManager.getIns(SceneManager.class);
 
     @FXML
     private AnchorPane transpane;
@@ -34,7 +36,7 @@ public class Translator {
 
     @FXML
     public void switchToHelloApplication(ActionEvent event) throws IOException {
-        new SwitchScene(transpane,"HelloApplication.fxml");
+        sceneM.openScene(transpane,"HelloApplication.fxml");
     }
     @FXML
     private void switchlanguage(ActionEvent event) {

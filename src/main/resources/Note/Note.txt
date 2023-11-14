@@ -5,3 +5,13 @@
 - use Singleton for Manager class.
 - use Factory to create Words (maybe).
 - use Change of Responsibility for use log in.
+----------------------------- Q&A -----------------------------
++ Tại sao dùng Singleton mà không dùng static?
+ -> Trả lời: - Singleton đảm bảo duy chỉ 1 đối tượng kế thừa từ Singleton được khởi tạo
+               trong suốt thời gian chạy trương trình. Ngược lại, mỗi lần gọi class hoặc
+               method static, máy sẽ phải cấp phát bộ nhớ cho đối tượng đó, gây ra việc
+               tốn bộ nhớ.
+             - Các class static không thể có các sub-class, và các method static không thể
+               bị override, do vậy muốn đảm bảo tính mô-đun của chương trình, nên sử dụng
+               Singleton (dẫu vậy vẫn không nên lạm dụng Singleton quá nhiều dẫn đến việc
+               chương trình sẽ rất rắc rối)

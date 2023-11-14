@@ -9,9 +9,10 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 public class Main extends Application {
+    DataBaseManager dataBaseM = DataBaseManager.getIns(DataBaseManager.class);
     @Override
     public void init() throws Exception {
-        DataBaseManager.init();
+        dataBaseM.init();
     }
 
     @Override

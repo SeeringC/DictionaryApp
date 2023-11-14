@@ -16,6 +16,8 @@ import java.util.Enumeration;
 import java.util.ResourceBundle;
 
 public class LookUpWord implements Initializable {
+
+    MyDictionary myDic = MyDictionary.getIns(MyDictionary.class);
     private ArrayList<String> tu = new ArrayList<String>();
     @FXML
     private TextField input;
@@ -40,7 +42,7 @@ public class LookUpWord implements Initializable {
 
     public ArrayList lookUpWord(KeyEvent event) {
         String t = input.getText();
-        Enumeration<String> keys = MyDictionary.dic.keys();
+        Enumeration<String> keys = myDic.dic.keys();
         while (keys.hasMoreElements()) {
             String key = keys.nextElement();
             boolean check = true;

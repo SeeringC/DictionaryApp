@@ -6,46 +6,79 @@ import javafx.scene.control.Alert;
 import java.util.Dictionary;
 import java.util.*;
 
-  class MyDictionary extends Singleton<MyDictionary> {
-    public static Dictionary<String, String> dic = new Hashtable<>();
-    public static void addWordtodic(String word, String definition) {
+  class MyDictionary extends Singleton<MyDictionary> implements CustomDictionary {
+    public Dictionary<String, String> dic = new Hashtable<>();
+    DataBaseManager dataBaseM = DataBaseManager.getIns(DataBaseManager.class);
+
+    @Override
+    public void addWordToDic(String word, String definition) {
         if (isWordInDic(word)) {
             dic.put(word, definition);
-            DataBaseManager.addWordtoSQL(word, definition);
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Information dialog");
-            alert.setContentText("Từ " + word + " đã được thêm thành công!");
-            alert.setHeaderText("Thông báo");
-            alert.showAndWait();
+            dataBaseM.addWordtoSQL(word, definition);
+            displayAlert("AddSuccess", word);
         } else {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Information dialog");
-            alert.setContentText("Từ " + word + " đã tồn tại trong từ điển!");
-            alert.setHeaderText("Thông báo");
-            alert.showAndWait();
+            displayAlert("AddFailed", word);
         }
     }
 
-    public static boolean isWordInDic(String word) {
-        if(dic.get(word) != null) {
-            System.out.println("Word already in dic");
-            return true;
-        }
-        return false;
+    @Override
+    public boolean isWordInDic(String word) {
+        return dic.get(word) != null;
     }
 
-    public static void deleteWordInDic(String word, String definition) {
+    @Override
+    public void deleteWordInDic(String word, String definition) {
         if (isWordInDic(word)) {
             dic.remove(word);
+            dataBaseM.deleteWordSQL(word);
+            displayAlert("DeleteSuccess", word);
         }
         else {
-            System.out.println("Từ không tồn tại trong từ điển");
+            displayAlert("DeleteFailed", word);
         }
     }
-    public static String lookUpWordInDic(String target) {
+
+    @Override
+    public String lookUpWordInDic(String target) {
         if(isWordInDic(target)) {
             return dic.get(target);
         }
         return "404";
     }
+
+    public void displayAlert(String type, String word) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        switch(type) {
+            case "AddSuccess":
+                alert.setTitle("Information dialog");
+                alert.setContentText("Từ " + word + " đã được thêm thành công!");
+                alert.setHeaderText("Thông báo");
+                alert.showAndWait();
+                break;
+
+            case "AddFailed":
+                alert.setTitle("Information dialog");
+                alert.setContentText("Từ " + word + " đã tồn tại trong từ điển!");
+                alert.setHeaderText("Thông báo");
+                alert.showAndWait();
+                break;
+
+            case "DeleteSuccess":
+                alert.setTitle("Information dialog");
+                alert.setContentText("Từ " + word + " đã được xóa thành công!");
+                alert.setHeaderText("Thông báo");
+                alert.showAndWait();
+                break;
+
+            case "DeleteFailed":
+                alert.setTitle("Information dialog");
+                alert.setContentText("Từ " + word + " không tồn tại trong từ điển!");
+                alert.setHeaderText("Thông báo");
+                alert.showAndWait();
+                break;
+
+        }
+
+    }
 }
+

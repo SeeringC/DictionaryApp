@@ -1,22 +1,43 @@
 package com.example.translatetest1;
 
+import Singleton.Singleton;
+
 import java.sql.*;
 
 import static java.sql.DriverManager.getConnection;
 
-public class DataBaseManager {
-    private static String DB_URL = "jdbc:mysql://localhost:3306/mydictionary";
-    private static String USER_NAME = "root";
-    private static String PASSWORD = "12345678";
+public class DataBaseManager extends Singleton<DataBaseManager> {
 
-    private static Connection connection = null;
+    private Connection connection = null;
+
+    MyDictionary myDic = MyDictionary.getIns(MyDictionary.class);
+
+    public void init() throws SQLException {
+        try {
+            connectToDatabase();
+            // create statement
+            Statement stmt = connection.createStatement();
+
+            // get data from table 'student'
+            ResultSet rs = stmt.executeQuery("select * from dictionary");
+
+            // show data
+            while (rs.next()) {
+                myDic.dic.put(rs.getString(2), rs.getString(3));
+            }
+
+            connection.close();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
 
     /**
      * Close connection to MYSQL database.
      *
      * @param connection Connection variable
      */
-    private static void close(Connection connection) {
+    private void close(Connection connection) {
         try {
             if (connection != null) {
                 connection.close();
@@ -31,7 +52,7 @@ public class DataBaseManager {
      *
      * @param ps PreparedStatement needed to close
      */
-    private static void close(PreparedStatement ps) {
+    private void close(PreparedStatement ps) {
         try {
             if (ps != null) {
                 ps.close();
@@ -46,7 +67,7 @@ public class DataBaseManager {
      *
      * @param rs ResultSet needed to be close
      */
-    private static void close(ResultSet rs) {
+    private void close(ResultSet rs) {
         try {
             if (rs != null) {
                 rs.close();
@@ -56,33 +77,16 @@ public class DataBaseManager {
         }
     }
 
-    private static void connectToDatabase() throws SQLException {
+    private void connectToDatabase() throws SQLException {
         System.out.println("Connecting to database...");
+        String DB_URL = "jdbc:mysql://localhost:3306/mydictionary";
+        String USER_NAME = "root";
+        String PASSWORD = "12345678";
         connection = DriverManager.getConnection(DB_URL, USER_NAME, PASSWORD);
         System.out.println("Database connected!\n");
     }
 
-    public static void init() throws SQLException {
-        try {
-            connectToDatabase();
-            // create statement
-            Statement stmt = connection.createStatement();
-
-            // get data from table 'student'
-            ResultSet rs = stmt.executeQuery("select * from dictionary");
-
-            // show data
-            while (rs.next()) {
-                MyDictionary.dic.put(rs.getString(2), rs.getString(3));
-            }
-
-            connection.close();
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-    }
-
-    public static void addWordtoSQL(String target, String definition) {
+    public void addWordtoSQL(String target, String definition) {
         final String SQL_QUERY = "INSERT INTO dictionary (target, definition) VALUES (?, ?)";
         try {
             connectToDatabase();
@@ -97,13 +101,13 @@ public class DataBaseManager {
             } finally {
                 close(ps);
             }
-            MyDictionary.addWordtodic(target, definition);
+            myDic.addWordToDic(target, definition);
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
-    public static void deleteWordSQL(String target) {
+    public void deleteWordSQL(String target) {
         final String SQL_QUERY = "DELETE FROM dictionary WHERE target = ?";
         try {
             PreparedStatement ps = connection.prepareStatement(SQL_QUERY);
@@ -116,7 +120,7 @@ public class DataBaseManager {
             } finally {
                 close(ps);
             }
-            MyDictionary.dic.remove(target);
+            myDic.dic.remove(target);
 
         } catch (SQLException e) {
             e.printStackTrace();

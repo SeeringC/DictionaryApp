@@ -1,5 +1,6 @@
 package com.example.translatetest1;
 
+import Manager.SceneManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -18,13 +19,15 @@ public class WordConfiguration {
     private TextField addbox1;
     @FXML
     private TextField addbox2;
+    MyDictionary myDic = MyDictionary.getIns(MyDictionary.class);
+    SceneManager sceneM = SceneManager.getIns(SceneManager.class);
     @FXML
     public void switchToHelloApplication(ActionEvent event) throws IOException {
-        new SwitchScene(AddPane,"HelloApplication.fxml");
+        sceneM.openScene(AddPane,"HelloApplication.fxml");
     }
 
     public void Success(ActionEvent event) throws SQLException {
-        MyDictionary.addWordtodic(addbox1.getText(), addbox2.getText());
+        myDic.addWordToDic(addbox1.getText(), addbox2.getText());
     }
 }
 

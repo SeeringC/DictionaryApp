@@ -1,7 +1,5 @@
 package com.example.translatetest1;
 
-import java.util.Dictionary;
-
 public interface CustomDictionary {
 
     void addWordToDic(String word, String definition);

@@ -1,20 +1,20 @@
 package com.example.translatetest1;
 
+import Manager.DataBaseManager;
 import Singleton.Singleton;
 import javafx.scene.control.Alert;
 
 import java.util.Dictionary;
 import java.util.*;
 
-  class MyDictionary extends Singleton<MyDictionary> implements CustomDictionary {
+  public class MyDictionary extends Singleton<MyDictionary> implements CustomDictionary {
     public Dictionary<String, String> dic = new Hashtable<>();
-    DataBaseManager dataBaseM = DataBaseManager.getIns(DataBaseManager.class);
 
     @Override
     public void addWordToDic(String word, String definition) {
-        if (isWordInDic(word)) {
+        if (!isWordInDic(word)) {
             dic.put(word, definition);
-            dataBaseM.addWordtoSQL(word, definition);
+            DataBaseManager.getIns(DataBaseManager.class).addWordtoSQL(word, definition);
             displayAlert("AddSuccess", word);
         } else {
             displayAlert("AddFailed", word);
@@ -30,10 +30,9 @@ import java.util.*;
     public void deleteWordInDic(String word, String definition) {
         if (isWordInDic(word)) {
             dic.remove(word);
-            dataBaseM.deleteWordSQL(word);
+            DataBaseManager.getIns(DataBaseManager.class).deleteWordSQL(word);
             displayAlert("DeleteSuccess", word);
-        }
-        else {
+        } else {
             displayAlert("DeleteFailed", word);
         }
     }
@@ -48,29 +47,29 @@ import java.util.*;
 
     public void displayAlert(String type, String word) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        switch(type) {
-            case "AddSuccess":
+        switch (type) {
+            case "AddSuccess" :
                 alert.setTitle("Information dialog");
                 alert.setContentText("Từ " + word + " đã được thêm thành công!");
                 alert.setHeaderText("Thông báo");
                 alert.showAndWait();
                 break;
 
-            case "AddFailed":
+            case "AddFailed" :
                 alert.setTitle("Information dialog");
                 alert.setContentText("Từ " + word + " đã tồn tại trong từ điển!");
                 alert.setHeaderText("Thông báo");
                 alert.showAndWait();
                 break;
 
-            case "DeleteSuccess":
+            case "DeleteSuccess" :
                 alert.setTitle("Information dialog");
                 alert.setContentText("Từ " + word + " đã được xóa thành công!");
                 alert.setHeaderText("Thông báo");
                 alert.showAndWait();
                 break;
 
-            case "DeleteFailed":
+            case "DeleteFailed" :
                 alert.setTitle("Information dialog");
                 alert.setContentText("Từ " + word + " không tồn tại trong từ điển!");
                 alert.setHeaderText("Thông báo");

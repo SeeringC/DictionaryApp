@@ -1,5 +1,6 @@
 package com.example.translatetest1;
 
+import Manager.DataBaseManager;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -9,10 +10,9 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 public class Main extends Application {
-    DataBaseManager dataBaseM = DataBaseManager.getIns(DataBaseManager.class);
     @Override
     public void init() throws Exception {
-        dataBaseM.init();
+        DataBaseManager.getIns(DataBaseManager.class).init();
     }
 
     @Override

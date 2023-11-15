@@ -1,4 +1,4 @@
-package com.example.translatetest1;
+package UI;
 
 
 import Manager.SceneManager;
@@ -20,9 +20,6 @@ import java.net.URLEncoder;
 
 public class Translator {
 
-    SoundManager soundM = SoundManager.getIns(SoundManager.class);
-    SceneManager sceneM = SceneManager.getIns(SceneManager.class);
-
     @FXML
     private AnchorPane transpane;
     @FXML
@@ -36,7 +33,7 @@ public class Translator {
 
     @FXML
     public void switchToHelloApplication(ActionEvent event) throws IOException {
-        sceneM.openScene(transpane,"HelloApplication.fxml");
+        SceneManager.getIns(SceneManager.class).openScene(transpane,"HelloApplication.fxml");
     }
     @FXML
     private void switchlanguage(ActionEvent event) {
@@ -62,8 +59,8 @@ public class Translator {
 
     @FXML
     private void speakWord(ActionEvent event) {
-        soundM.setWordToSpeak(inputWord.getText());
-        soundM.speakWord();
+        SoundManager.getIns(SoundManager.class).setWordToSpeak(inputWord.getText());
+        SoundManager.getIns(SoundManager.class).speakWord();
     }
 
     private static String translate(String langFrom, String langTo, String text) throws IOException {

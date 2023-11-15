@@ -1,16 +1,13 @@
-package com.example.translatetest1;
+package Manager;
 
 import Singleton.Singleton;
+import com.example.translatetest1.MyDictionary;
 
 import java.sql.*;
-
-import static java.sql.DriverManager.getConnection;
 
 public class DataBaseManager extends Singleton<DataBaseManager> {
 
     private Connection connection = null;
-
-    MyDictionary myDic = MyDictionary.getIns(MyDictionary.class);
 
     public void init() throws SQLException {
         try {
@@ -23,7 +20,7 @@ public class DataBaseManager extends Singleton<DataBaseManager> {
 
             // show data
             while (rs.next()) {
-                myDic.dic.put(rs.getString(2), rs.getString(3));
+                MyDictionary.getIns(MyDictionary.class).dic.put(rs.getString(2), rs.getString(3));
             }
 
             connection.close();
@@ -101,7 +98,6 @@ public class DataBaseManager extends Singleton<DataBaseManager> {
             } finally {
                 close(ps);
             }
-            myDic.addWordToDic(target, definition);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -120,7 +116,7 @@ public class DataBaseManager extends Singleton<DataBaseManager> {
             } finally {
                 close(ps);
             }
-            myDic.dic.remove(target);
+            MyDictionary.getIns(MyDictionary.class).dic.remove(target);
 
         } catch (SQLException e) {
             e.printStackTrace();

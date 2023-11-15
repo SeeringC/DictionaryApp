@@ -4,7 +4,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.translatetest1.LookUpWord">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.LookUpWord">
    <children>
       <TextField fx:id="input" layoutY="2.0" onKeyReleased="#lookUpWord" prefHeight="72.0" prefWidth="214.0" />
       <ListView fx:id="searchList" layoutX="-1.0" layoutY="74.0" prefHeight="327.0" prefWidth="214.0" />

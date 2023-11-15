@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="HomePane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.translatetest1.HelloApplication">
+<AnchorPane fx:id="HomePane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.HelloApplication">
    <children>
       <Button layoutX="69.0" layoutY="67.0" mnemonicParsing="false" onAction="#switchToAddWord" text="Thêm từ" />
       <Button layoutX="51.0" layoutY="116.0" mnemonicParsing="false" onAction="#switchToTranslator" text="Google Translate" />
       <Button layoutX="78.0" layoutY="175.0" mnemonicParsing="false" onAction="#switchToLookUpWord" text="Tìm kiếm" />
+      <JFXButton layoutX="274.0" layoutY="142.0" text="JFX" />
    </children>
 </AnchorPane>

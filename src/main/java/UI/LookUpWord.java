@@ -15,10 +15,9 @@ import java.util.ResourceBundle;
 public class LookUpWord implements Initializable {
 
     MyDictionary myDic = MyDictionary.getIns(MyDictionary.class);
-    private ArrayList<String> tu = new ArrayList<String>();
+    private ArrayList<String> tu = new ArrayList<>();
     @FXML
     private TextField input;
-
     @FXML
     private TextField output;
 
@@ -46,6 +45,7 @@ public class LookUpWord implements Initializable {
             for (int i = 0; i < t.length(); i++) {
                 if (key.charAt(i) != t.charAt(i)) {
                     check = false;
+                    break;
                 }
             }
             if (check) {

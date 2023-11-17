@@ -1,6 +1,7 @@
 module com.example.translatetest1 {
     requires javafx.controls;
     requires javafx.fxml;
+    requires javafx.base;
 
     requires org.controlsfx.controls;
     requires org.kordamp.ikonli.javafx;

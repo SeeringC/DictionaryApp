@@ -22,7 +22,7 @@ public class AddWord {
     private TextField addbox2;
     @FXML
     public void switchToHelloApplication(ActionEvent event) throws IOException {
-        SceneManager.getIns(SceneManager.class).openScene(AddPane,"HelloApplication.fxml");
+        SceneManager.getIns(SceneManager.class).openScene(event,"HelloApplication.fxml");
     }
 
     public void Success(ActionEvent event) throws SQLException {

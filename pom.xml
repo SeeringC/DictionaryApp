@@ -109,6 +109,9 @@
                             <noManPages>true</noManPages>
                             <stripDebug>true</stripDebug>
                             <noHeaderFiles>true</noHeaderFiles>
+                            <option>-XX:+UseG1GC</option>
+                            <option>--add-exports</option>
+                            <option>javafx.base/com.sun.javafx.event=org.controlsfx.controls</option>
                         </configuration>
                     </execution>
                 </executions>

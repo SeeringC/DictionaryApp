@@ -33,7 +33,7 @@ public class Translator {
 
     @FXML
     public void switchToHelloApplication(ActionEvent event) throws IOException {
-        SceneManager.getIns(SceneManager.class).openScene(transpane,"HelloApplication.fxml");
+        SceneManager.getIns(SceneManager.class).openScene(event,"HelloApplication.fxml");
     }
     @FXML
     private void switchlanguage(ActionEvent event) {

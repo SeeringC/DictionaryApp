@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.Pane;
 import org.controlsfx.control.textfield.TextFields;
 
 import java.io.IOException;
@@ -22,6 +23,8 @@ public class HelloApplication implements Initializable {
     private ArrayList<String> suggestions = null;
     @FXML
     private TextField searchWord;
+    @FXML
+    private Pane currentPane;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         // copy all the word target from the dictionary to suggestions
@@ -41,32 +44,32 @@ public class HelloApplication implements Initializable {
     }
     @FXML
     public void switchToTranslator(ActionEvent event) throws IOException {
-        SceneManager.getIns(SceneManager.class).openScene(event,"Translator.fxml");
+        SceneManager.getIns(SceneManager.class).openScene(currentPane, "Translator.fxml");
     }
 
     @FXML
     public void switchToAddWord(ActionEvent event) throws IOException {
-        SceneManager.getIns(SceneManager.class).openScene(event,"AddWord.fxml");
+        SceneManager.getIns(SceneManager.class).openScene(currentPane, "AddWord.fxml");
     }
 
     @FXML
     public void switchToGame(ActionEvent event) throws IOException {
-        SceneManager.getIns(SceneManager.class).openScene(event,"Game.fxml");
+        SceneManager.getIns(SceneManager.class).openScene(currentPane, "Game.fxml");
     }
 
     @FXML
-    public void switchFileTranslator(ActionEvent event) throws IOException {
-        SceneManager.getIns(SceneManager.class).openScene(event,"FileTranslator.fxml");
+    public void switchToFileTranslator(ActionEvent event) throws IOException {
+        SceneManager.getIns(SceneManager.class).openScene(currentPane, "FileTranslator.fxml");
     }
 
     @FXML
-    public void switchImageTranslator(ActionEvent event) throws IOException {
-        SceneManager.getIns(SceneManager.class).openScene(event,"ImageTranslator.fxml");
+    public void switchToBookmarks(ActionEvent event) throws IOException {
+        SceneManager.getIns(SceneManager.class).openScene(currentPane, "Bookmarks.fxml");
     }
 
     @FXML
-    public void switchHistory(ActionEvent event) throws IOException {
-        SceneManager.getIns(SceneManager.class).openScene(event,"History.fxml");
+    public void switchToHistory(ActionEvent event) throws IOException {
+        SceneManager.getIns(SceneManager.class).openScene(currentPane, "History.fxml");
     }
 
     public ArrayList<String> lookUpWord() {

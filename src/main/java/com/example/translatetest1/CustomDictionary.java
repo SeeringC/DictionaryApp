@@ -6,7 +6,10 @@ public interface CustomDictionary {
 
     boolean isWordInDic(String word);
 
-    void deleteWordInDic(String word, String definition);
+    void deleteWordInDic(String word);
 
     String lookUpWordInDic(String target);
+
+    void changeWordDefinition(String target, String definition);
 }
+

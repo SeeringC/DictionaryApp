@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.ResourceBundle;
 
-public class LookUpWord implements Initializable {
+public class LookUpWord implements Initializable, UILayer {
 
     MyDictionary myDic = MyDictionary.getIns(MyDictionary.class);
     private ArrayList<String> tu = new ArrayList<>();
@@ -24,6 +24,20 @@ public class LookUpWord implements Initializable {
     @FXML
     private ListView<String> searchList;
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        searchList.getItems().addAll(tu);
+    }
+
+    @Override
+    public void onInit() {
+
+    }
+
+    @Override
+    public void onCLose() {
+
+    }
 
     public String handle_String(String s) {
         String xuongdong = "<br />";
@@ -56,8 +70,5 @@ public class LookUpWord implements Initializable {
     }
 
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-searchList.getItems().addAll(tu);
-    }
+
 }

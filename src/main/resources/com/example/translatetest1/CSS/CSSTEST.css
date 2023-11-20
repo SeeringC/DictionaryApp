@@ -1,0 +1,57 @@
+@import url("https://fonts.googleapis.com/css?family=Barlow%7CTomorrow:400,700&display=swap");
+
+.root {
+    -fx-yellow-color: #fcee09;
+    -fx-red-color: #ff003c;
+    -fx-black-color: #050a0e;
+    -fx-blue-color: #00f0ff;
+    -fx-white-color: #fafafa;
+}
+
+.btn {
+    -fx-pref-width: 230px;
+    -fx-pref-height: 60px;
+    -fx-border-width: 0;
+    -fx-background-color: -fx-black-color;
+    -fx-cursor: hand;
+    -fx-font-family: "Tomorrow", sans-serif;
+    -fx-font-size: 14px;
+    -fx-text-transform: uppercase;
+    -fx-text-fill: -fx-black-color;
+}
+
+.btn__content {
+    -fx-background-color: -fx-yellow-color;
+}
+
+.btn--secondary {
+    -fx-background-color: -fx-white-color;
+}
+
+.btn--secondary .btn__content {
+    -fx-background-color: -fx-red-color;
+    -fx-text-fill: -fx-white-color;
+}
+
+.btn__label {
+    -fx-font-size: 6px;
+    -fx-background-color: -fx-yellow-color;
+    -fx-border-color: -fx-blue-color;
+    -fx-border-width: 0 0 0 1px;
+}
+
+.btn--secondary .btn__label {
+    -fx-background-color: -fx-white-color;
+    -fx-text-fill: -fx-black-color;
+}
+
+.btn__glitch {
+    -fx-pref-width: 100%;
+    -fx-pref-height: 100%;
+    -fx-background-color: -fx-yellow-color;
+}
+
+.btn--secondary .btn__glitch {
+    -fx-background-color: -fx-red-color;
+}
+

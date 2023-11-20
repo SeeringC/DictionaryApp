@@ -1,6 +1,7 @@
 package UI;
 
-import Manager.SceneManager;
+import Manager.DataManager;
+import Manager.UIManager;
 import com.example.translatetest1.MyDictionary;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -16,7 +17,7 @@ import java.util.Enumeration;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
-public class HelloApplication implements Initializable {
+public class HelloApplication implements Initializable, UILayer {
 
     MyDictionary myDic = MyDictionary.getIns(MyDictionary.class);
 
@@ -25,6 +26,16 @@ public class HelloApplication implements Initializable {
     private TextField searchWord;
     @FXML
     private Pane currentPane;
+
+    @Override
+    public void onInit() {
+
+    }
+
+    @Override
+    public void onCLose() {
+
+    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         // copy all the word target from the dictionary to suggestions
@@ -44,33 +55,58 @@ public class HelloApplication implements Initializable {
     }
     @FXML
     public void switchToTranslator(ActionEvent event) throws IOException {
-        SceneManager.getIns(SceneManager.class).openScene(currentPane, "Translator.fxml");
+        UIManager.getIns(UIManager.class).openScene(currentPane, "Translator.fxml");
     }
 
     @FXML
     public void switchToAddWord(ActionEvent event) throws IOException {
-        SceneManager.getIns(SceneManager.class).openScene(currentPane, "AddWord.fxml");
+        UIManager.getIns(UIManager.class).openScene(currentPane, "AddWord.fxml");
     }
 
     @FXML
     public void switchToGame(ActionEvent event) throws IOException {
-        SceneManager.getIns(SceneManager.class).openScene(currentPane, "Game.fxml");
+        UIManager.getIns(UIManager.class).openScene(currentPane, "Game.fxml");
     }
 
     @FXML
     public void switchToFileTranslator(ActionEvent event) throws IOException {
-        SceneManager.getIns(SceneManager.class).openScene(currentPane, "FileTranslator.fxml");
+        UIManager.getIns(UIManager.class).openScene(currentPane, "FileTranslator.fxml");
     }
 
     @FXML
     public void switchToBookmarks(ActionEvent event) throws IOException {
-        SceneManager.getIns(SceneManager.class).openScene(currentPane, "Bookmarks.fxml");
+        UIManager.getIns(UIManager.class).openScene(currentPane, "Bookmarks.fxml");
     }
 
     @FXML
     public void switchToHistory(ActionEvent event) throws IOException {
-        SceneManager.getIns(SceneManager.class).openScene(currentPane, "History.fxml");
+        UIManager.getIns(UIManager.class).openScene(currentPane, "History.fxml");
     }
+
+    @FXML
+    private void searchWord(ActionEvent event) throws IOException {
+        String temporarySearchedWordTarget = searchWord.getText();
+        String temporarySearchedWordDefinition = myDic.lookUpWordInDic(temporarySearchedWordTarget);
+        DataManager.getIns(DataManager.class).setTemporarySearchWordTarget(temporarySearchedWordTarget);
+        DataManager.getIns(DataManager.class).setTemporarySearchWordDefinition(temporarySearchedWordDefinition);
+        UIManager.getIns(UIManager.class).openScene(currentPane, "WordDisplay.fxml");
+    }
+//    @FXML
+//    public void showNewButton(ActionEvent event) throws IOException {
+//        //css test area
+//        Button btn = new Button("Get your copy now_");
+//        btn.getStyleClass().add("btn");
+//        Label btnContent = new Label("Get your copy now_");
+//        btnContent.getStyleClass().add("btn__content");
+//
+//        Label btnGlitch = new Label();
+//        btnGlitch.getStyleClass().add("btn__glitch");
+//
+//        Label btnLabel = new Label("r25");
+//        btnLabel.getStyleClass().add("btn__label");
+//        VBox vbox = new VBox(btnContent, btnGlitch, btnLabel);
+//        btn.setGraphic(vbox);
+//    }
 
     public ArrayList<String> lookUpWord() {
         ArrayList<String> tu = new ArrayList<>();

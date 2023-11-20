@@ -1,7 +1,7 @@
 package UI;
 
 
-import Manager.SceneManager;
+import Manager.UIManager;
 import Manager.SoundManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -18,7 +18,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 
-public class Translator {
+public class Translator implements UILayer {
 
     @FXML
     private Pane currentPane;
@@ -31,10 +31,21 @@ public class Translator {
     @FXML
     private TextArea outputWord;
 
+    @Override
+    public void onInit() {
+
+    }
+
+    @Override
+    public void onCLose() {
+
+    }
+
     @FXML
     public void switchToHelloApplication(ActionEvent event) throws IOException {
-        SceneManager.getIns(SceneManager.class).openScene(currentPane, "HelloApplication.fxml");
+        UIManager.getIns(UIManager.class).openScene(currentPane, "HelloApplication.fxml");
     }
+
     @FXML
     private void switchlanguage(ActionEvent event) {
         String s = first.getText();
@@ -96,6 +107,8 @@ public class Translator {
 
         return response.toString();
     }
+
+
 }
 
 

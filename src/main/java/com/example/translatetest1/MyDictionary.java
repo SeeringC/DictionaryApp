@@ -1,11 +1,11 @@
 package com.example.translatetest1;
 
-import Manager.DataBaseManager;
+import Manager.DataManager;
+import Manager.UIManager;
 import Singleton.Singleton;
-import javafx.scene.control.Alert;
 
 import java.util.Dictionary;
-import java.util.*;
+import java.util.Hashtable;
 
   public class MyDictionary extends Singleton<MyDictionary> implements CustomDictionary {
     public Dictionary<String, String> dic = new Hashtable<>();
@@ -14,10 +14,10 @@ import java.util.*;
     public void addWordToDic(String word, String definition) {
         if (!isWordInDic(word)) {
             dic.put(word, definition);
-            DataBaseManager.getIns(DataBaseManager.class).addWordtoSQL(word, definition);
-            displayAlert("AddSuccess", word);
+            DataManager.getIns(DataManager.class).addWordtoSQL(word, definition);
+            UIManager.getIns(UIManager.class).displayAlert("AddSuccess", word);
         } else {
-            displayAlert("AddFailed", word);
+            UIManager.getIns(UIManager.class).displayAlert("AddFailed", word);
         }
     }
 
@@ -27,57 +27,27 @@ import java.util.*;
     }
 
     @Override
-    public void deleteWordInDic(String word, String definition) {
-        if (isWordInDic(word)) {
-            dic.remove(word);
-            DataBaseManager.getIns(DataBaseManager.class).deleteWordSQL(word);
-            displayAlert("DeleteSuccess", word);
-        } else {
-            displayAlert("DeleteFailed", word);
-        }
+    public void deleteWordInDic(String word) {
+        dic.remove(word);
+        DataManager.getIns(DataManager.class).deleteWordSQL(word);
+        UIManager.getIns(UIManager.class).displayAlert("DeleteWordSuccess", word);
     }
 
     @Override
-    public String lookUpWordInDic(String target) {
-        if(isWordInDic(target)) {
-            return dic.get(target);
+    public String lookUpWordInDic(String word) {
+        String searchedWordDefinition = null;
+        try {
+            searchedWordDefinition = dic.get(word);
+        } catch (NullPointerException e) {
+            UIManager.getIns(UIManager.class).displayAlert("SearchWordFailed", word);
         }
-        return "404";
+        return searchedWordDefinition;
     }
 
-    public void displayAlert(String type, String word) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        switch (type) {
-            case "AddSuccess" :
-                alert.setTitle("Information dialog");
-                alert.setContentText("Từ " + word + " đã được thêm thành công!");
-                alert.setHeaderText("Thông báo");
-                alert.showAndWait();
-                break;
-
-            case "AddFailed" :
-                alert.setTitle("Information dialog");
-                alert.setContentText("Từ " + word + " đã tồn tại trong từ điển!");
-                alert.setHeaderText("Thông báo");
-                alert.showAndWait();
-                break;
-
-            case "DeleteSuccess" :
-                alert.setTitle("Information dialog");
-                alert.setContentText("Từ " + word + " đã được xóa thành công!");
-                alert.setHeaderText("Thông báo");
-                alert.showAndWait();
-                break;
-
-            case "DeleteFailed" :
-                alert.setTitle("Information dialog");
-                alert.setContentText("Từ " + word + " không tồn tại trong từ điển!");
-                alert.setHeaderText("Thông báo");
-                alert.showAndWait();
-                break;
-
-        }
-
+    @Override
+    public void changeWordDefinition(String target, String definition) {
+        dic.remove(target);
+        dic.put(target, definition);
     }
 }
 

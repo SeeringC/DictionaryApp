@@ -5,9 +5,13 @@ import com.example.translatetest1.MyDictionary;
 
 import java.sql.*;
 
-public class DataBaseManager extends Singleton<DataBaseManager> {
+public class DataManager extends Singleton<DataManager> {
 
+    /** IMPORTANT: Need to break down Database and Data. */
     private Connection connection = null;
+
+    private String temporarySearchWordTarget = null;
+    private String temporarySearchWordDefinition = null;
 
     public void init() throws SQLException {
         try {
@@ -123,6 +127,23 @@ public class DataBaseManager extends Singleton<DataBaseManager> {
 
         }
     }
+
+    public String getTemporarySearchWordTarget() {
+        return temporarySearchWordTarget;
+    }
+
+    public void setTemporarySearchWordTarget(String temporarySearchWordTarget) {
+        this.temporarySearchWordTarget = temporarySearchWordTarget;
+    }
+
+    public String getTemporarySearchWordDefinition() {
+        return temporarySearchWordDefinition;
+    }
+
+    public void setTemporarySearchWordDefinition(String temporarySearchWordDefinition) {
+        this.temporarySearchWordDefinition = temporarySearchWordDefinition;
+    }
+
     public String lookUpWord(String target) {
         final String SQL_QUERY = "SELECT definition FROM dictionary WHERE target = ?";
         try {

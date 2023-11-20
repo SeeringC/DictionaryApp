@@ -1,6 +1,6 @@
 package UI;
 
-import Manager.SceneManager;
+import Manager.UIManager;
 import com.example.translatetest1.MyDictionary;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -11,7 +11,7 @@ import javafx.scene.layout.Pane;
 import java.io.IOException;
 import java.sql.SQLException;
 
-public class AddWord {
+public class AddWord implements UILayer {
     @FXML
     private Pane currentPane;
     @FXML
@@ -20,13 +20,25 @@ public class AddWord {
     private TextField addbox1;
     @FXML
     private TextField addbox2;
+
+    @Override
+    public void onInit() {
+
+    }
+
+    @Override
+    public void onCLose() {
+
+    }
     @FXML
     public void switchToHelloApplication(ActionEvent event) throws IOException {
-        SceneManager.getIns(SceneManager.class).openScene(currentPane, "HelloApplication.fxml");
+        UIManager.getIns(UIManager.class).openScene(currentPane, "HelloApplication.fxml");
     }
 
     public void Success(ActionEvent event) throws SQLException {
         MyDictionary.getIns(MyDictionary.class).addWordToDic(addbox1.getText(), addbox2.getText());
     }
+
+
 }
 

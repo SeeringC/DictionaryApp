@@ -13,6 +13,7 @@ module com.example.translatetest1 {
     requires java.sql;
     requires java.net.http;
     requires com.jfoenix;
+    requires java.desktop;
 
     opens com.example.translatetest1 to javafx.fxml;
     exports com.example.translatetest1;

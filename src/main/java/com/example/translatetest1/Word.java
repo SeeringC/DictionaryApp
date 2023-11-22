@@ -1,7 +1,9 @@
 package com.example.translatetest1;
 
+import java.util.Objects;
+
 public class Word {
-    private final String wordTarget;
+    private String wordTarget;
     private String wordExplain;
 
     /**
@@ -38,7 +40,25 @@ public class Word {
      *
      * @param wordExplain Vietnamese definition
      */
-    public void setWordExplain(String wordExplain) {
+
+    public void setWordDefinition(String wordExplain) {
         this.wordExplain = wordExplain;
+    }
+
+    public void setWordTarget(String wordTarget) {
+        this.wordTarget = wordTarget;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Word word = (Word) o;
+        return Objects.equals(wordTarget, word.wordTarget);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(wordTarget);
     }
 }

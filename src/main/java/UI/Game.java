@@ -28,6 +28,6 @@ public class Game implements UILayer {
 
     @FXML
     private void switchToWordleGame(ActionEvent event) throws IOException {
-        UIManager.getIns(UIManager.class).openScene(currentPane, "WordleGame.fxml");
+        UIManager.getIns(UIManager.class).openScene(currentPane, "Games/WordleGame.fxml");
     }
 }

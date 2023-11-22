@@ -17,7 +17,7 @@
                <children>
                   <Button contentDisplay="TOP" layoutX="78.0" layoutY="181.0" onAction="#switchToTranslator" text="Google Translate">
                      <graphic>
-                        <ImageView fitHeight="62.0" fitWidth="75.0" pickOnBounds="true" styleClass="btn">
+                        <ImageView fitHeight="62.0" fitWidth="75.0" pickOnBounds="true">
                            <image>
                               <Image url="@../../../Images/red.png" />
                            </image>
@@ -26,7 +26,7 @@
                   </Button>
                   <Button contentDisplay="TOP" layoutX="307.0" layoutY="181.0" onAction="#switchToHistory" text="History">
                      <graphic>
-                        <ImageView fitHeight="62.0" fitWidth="75.0" pickOnBounds="true" styleClass="btn">
+                        <ImageView fitHeight="62.0" fitWidth="75.0" pickOnBounds="true">
                            <image>
                               <Image url="@../../../Images/red.png" />
                            </image>
@@ -35,7 +35,7 @@
                   </Button>
                   <Button contentDisplay="TOP" layoutX="307.0" layoutY="272.0" onAction="#switchToFileTranslator" text="File Translator">
                      <graphic>
-                        <ImageView fitHeight="62.0" fitWidth="75.0" pickOnBounds="true" styleClass="btn">
+                        <ImageView fitHeight="62.0" fitWidth="75.0" pickOnBounds="true">
                            <image>
                               <Image url="@../../../Images/red.png" />
                            </image>
@@ -44,7 +44,7 @@
                   </Button>
                   <Button contentDisplay="TOP" layoutX="199.0" layoutY="272.0" onAction="#switchToAddWord" text="Add Word">
                      <graphic>
-                        <ImageView fitHeight="62.0" fitWidth="75.0" pickOnBounds="true" styleClass="btn">
+                        <ImageView fitHeight="62.0" fitWidth="75.0" pickOnBounds="true">
                            <image>
                               <Image url="@../../../Images/red.png" />
                            </image>
@@ -53,7 +53,7 @@
                   </Button>
                   <Button contentDisplay="TOP" layoutX="85.0" layoutY="272.0" onAction="#switchToGame" text="Play Games">
                      <graphic>
-                        <ImageView fitHeight="62.0" fitWidth="75.0" pickOnBounds="true" styleClass="btn">
+                        <ImageView fitHeight="62.0" fitWidth="75.0" pickOnBounds="true">
                            <image>
                               <Image url="@../../../Images/red.png" />
                            </image>
@@ -62,7 +62,7 @@
                   </Button>
                   <Button contentDisplay="TOP" layoutX="199.0" layoutY="181.0" onAction="#switchToBookmarks" text="Bookmarks">
                      <graphic>
-                        <ImageView fitHeight="62.0" fitWidth="75.0" pickOnBounds="true" styleClass="btn">
+                        <ImageView fitHeight="62.0" fitWidth="75.0" pickOnBounds="true">
                            <image>
                               <Image url="@../../../Images/red.png" />
                            </image>
@@ -72,7 +72,7 @@
                   <Pane prefHeight="155.0" prefWidth="448.0">
                      <children>
                         <TextField fx:id="searchWord" layoutX="121.0" layoutY="52.0" />
-                        <Button contentDisplay="RIGHT" layoutX="283.0" layoutY="52.0" onAction="#searchWord" styleClass="btn" text="Search">
+                        <Button contentDisplay="RIGHT" layoutX="283.0" layoutY="52.0" onAction="#searchWord" text="Search">
                            <graphic>
                               <FontIcon iconLiteral="fas-search" />
                            </graphic>
@@ -101,8 +101,8 @@
                         <Text layoutX="27.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your Name" />
                      </children>
                   </Pane>
-                  <Button layoutX="23.0" layoutY="289.0" styleClass="btn" text="Change Account" />
-                  <Button layoutX="50.0" layoutY="256.0" styleClass="btn" text="Profile" />
+                  <Button layoutX="23.0" layoutY="289.0" text="Change Account" />
+                  <Button layoutX="50.0" layoutY="256.0" text="Profile" />
                </children>
             </Pane>
          </left>

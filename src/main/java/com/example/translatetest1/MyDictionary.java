@@ -7,13 +7,23 @@ import Singleton.Singleton;
 import java.util.Dictionary;
 import java.util.Hashtable;
 
-  public class MyDictionary extends Singleton<MyDictionary> implements CustomDictionary {
-    public Dictionary<String, String> dic = new Hashtable<>();
+public class MyDictionary extends Singleton<MyDictionary> implements CustomDictionary {
+
+    public Dictionary<String, EnViWord> enToViDic = new Hashtable<>();
+
+    @Override
+    public <T extends Word> void loadWordFromSQL(T word) {
+        if (word instanceof EnViWord) {
+            enToViDic.put(word.getWordTarget(), (EnViWord) word);
+        }
+    }
 
     @Override
     public void addWordToDic(String word, String definition) {
         if (!isWordInDic(word)) {
-            dic.put(word, definition);
+            Cache.setCurrentEnViWordByTargetAndDefinition(word, definition);
+            enToViDic.put(word, Cache.getCurrentEnViWord());
+
             DataManager.getIns(DataManager.class).addWordtoSQL(word, definition);
             UIManager.getIns(UIManager.class).displayAlert("AddSuccess", word);
         } else {
@@ -23,31 +33,32 @@ import java.util.Hashtable;
 
     @Override
     public boolean isWordInDic(String word) {
-        return dic.get(word) != null;
+        return enToViDic.get(word) != null;
     }
 
     @Override
     public void deleteWordInDic(String word) {
-        dic.remove(word);
+        enToViDic.remove(word);
         DataManager.getIns(DataManager.class).deleteWordSQL(word);
         UIManager.getIns(UIManager.class).displayAlert("DeleteWordSuccess", word);
     }
 
     @Override
     public String lookUpWordInDic(String word) {
-        String searchedWordDefinition = null;
-        try {
-            searchedWordDefinition = dic.get(word);
-        } catch (NullPointerException e) {
+        if (word == null || enToViDic.get(word) == null) {
             UIManager.getIns(UIManager.class).displayAlert("SearchWordFailed", word);
+            return null;
         }
-        return searchedWordDefinition;
+        System.out.println("2 current word target: " + Cache.getCurrentEnViWordTarget());
+        System.out.println("2 current word definition: " + Cache.getCurrentEnViWordDefinition());
+        return enToViDic.get(word).getWordDefinition();
     }
 
     @Override
     public void changeWordDefinition(String target, String definition) {
-        dic.remove(target);
-        dic.put(target, definition);
+        enToViDic.remove(target);
+        Cache.setCurrentEnViWordByTargetAndDefinition(target, definition);
+        enToViDic.put(target, Cache.getCurrentEnViWord());
     }
 }
 

@@ -1,6 +1,7 @@
 package Manager;
 
 import Singleton.Singleton;
+import com.example.translatetest1.EnViWord;
 import com.example.translatetest1.MyDictionary;
 
 import java.sql.*;
@@ -9,9 +10,6 @@ public class DataManager extends Singleton<DataManager> {
 
     /** IMPORTANT: Need to break down Database and Data. */
     private Connection connection = null;
-
-    private String temporarySearchWordTarget = null;
-    private String temporarySearchWordDefinition = null;
 
     public void init() throws SQLException {
         try {
@@ -24,9 +22,9 @@ public class DataManager extends Singleton<DataManager> {
 
             // show data
             while (rs.next()) {
-                MyDictionary.getIns(MyDictionary.class).dic.put(rs.getString(2), rs.getString(3));
+                EnViWord newEnViWord = new EnViWord(rs.getString(2), rs.getString(3));
+                MyDictionary.getIns(MyDictionary.class).loadWordFromSQL(newEnViWord);
             }
-
             connection.close();
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -120,28 +118,11 @@ public class DataManager extends Singleton<DataManager> {
             } finally {
                 close(ps);
             }
-            MyDictionary.getIns(MyDictionary.class).dic.remove(target);
 
         } catch (SQLException e) {
             e.printStackTrace();
 
         }
-    }
-
-    public String getTemporarySearchWordTarget() {
-        return temporarySearchWordTarget;
-    }
-
-    public void setTemporarySearchWordTarget(String temporarySearchWordTarget) {
-        this.temporarySearchWordTarget = temporarySearchWordTarget;
-    }
-
-    public String getTemporarySearchWordDefinition() {
-        return temporarySearchWordDefinition;
-    }
-
-    public void setTemporarySearchWordDefinition(String temporarySearchWordDefinition) {
-        this.temporarySearchWordDefinition = temporarySearchWordDefinition;
     }
 
     public String lookUpWord(String target) {

@@ -23,4 +23,6 @@ module com.example.translatetest1 {
     opens Singleton to javafx.fxml;
     exports UI;
     opens UI to javafx.fxml;
+    exports UI.Games;
+    opens UI.Games to javafx.fxml;
 }

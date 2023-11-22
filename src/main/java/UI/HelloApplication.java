@@ -1,7 +1,7 @@
 package UI;
 
-import Manager.DataManager;
 import Manager.UIManager;
+import com.example.translatetest1.Cache;
 import com.example.translatetest1.MyDictionary;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -18,8 +18,6 @@ import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
 public class HelloApplication implements Initializable, UILayer {
-
-    MyDictionary myDic = MyDictionary.getIns(MyDictionary.class);
 
     private ArrayList<String> suggestions = null;
     @FXML
@@ -85,10 +83,12 @@ public class HelloApplication implements Initializable, UILayer {
 
     @FXML
     private void searchWord(ActionEvent event) throws IOException {
-        String temporarySearchedWordTarget = searchWord.getText();
-        String temporarySearchedWordDefinition = myDic.lookUpWordInDic(temporarySearchedWordTarget);
-        DataManager.getIns(DataManager.class).setTemporarySearchWordTarget(temporarySearchedWordTarget);
-        DataManager.getIns(DataManager.class).setTemporarySearchWordDefinition(temporarySearchedWordDefinition);
+        System.out.println("1 Searched word target: " + searchWord.getText());
+        System.out.println("1 Searched word definition: " + MyDictionary.getIns(MyDictionary.class).enToViDic.get(searchWord.getText()).getWordDefinition());
+
+        System.out.println("1 current word target: " + Cache.getCurrentEnViWordTarget());
+        System.out.println("1 current word definition: " + Cache.getCurrentEnViWordDefinition());
+        Cache.setCurrentEnViWordByTargetAndDefinition(searchWord.getText(), MyDictionary.getIns(MyDictionary.class).lookUpWordInDic(searchWord.getText()));
         UIManager.getIns(UIManager.class).openScene(currentPane, "WordDisplay.fxml");
     }
 //    @FXML
@@ -110,7 +110,7 @@ public class HelloApplication implements Initializable, UILayer {
 
     public ArrayList<String> lookUpWord() {
         ArrayList<String> tu = new ArrayList<>();
-        Enumeration<String> keys = myDic.dic.keys();
+        Enumeration<String> keys = MyDictionary.getIns(MyDictionary.class).enToViDic.keys();
         while (keys.hasMoreElements()) {
             String key = keys.nextElement();
             tu.add(key);

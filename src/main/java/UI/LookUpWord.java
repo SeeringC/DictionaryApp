@@ -14,7 +14,6 @@ import java.util.ResourceBundle;
 
 public class LookUpWord implements Initializable, UILayer {
 
-    MyDictionary myDic = MyDictionary.getIns(MyDictionary.class);
     private ArrayList<String> tu = new ArrayList<>();
     @FXML
     private TextField input;
@@ -52,7 +51,7 @@ public class LookUpWord implements Initializable, UILayer {
 
     public ArrayList lookUpWord(KeyEvent event) {
         String t = input.getText();
-        Enumeration<String> keys = myDic.dic.keys();
+        Enumeration<String> keys = MyDictionary.getIns(MyDictionary.class).enToViDic.keys();
         while (keys.hasMoreElements()) {
             String key = keys.nextElement();
             boolean check = true;

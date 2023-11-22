@@ -19,7 +19,7 @@ public class WordleGame implements UILayer {
     private TextField textField2;
     @Override
     public void onInit() {
-
+        moveToNextTextField();
     }
 
     @Override

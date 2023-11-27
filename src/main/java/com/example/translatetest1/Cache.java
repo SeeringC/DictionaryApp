@@ -1,7 +1,7 @@
 package com.example.translatetest1;
 
 public class Cache {
-    public static EnViWord currentEnViWord = new EnViWord("1", "1");
+    public static EnViWord currentEnViWord = new EnViWord("", "");
 
     public static EnViWord getCurrentEnViWord() {
         return currentEnViWord;

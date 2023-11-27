@@ -59,4 +59,22 @@ public class UIManager extends Singleton<UIManager> {
         }
 
     }
+
+    public void displayWordleGameAlert(String type, String word) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        switch (type) {
+            case "Win":
+                alert.setTitle("YOU WIN!");
+                alert.setContentText(word);
+                alert.setHeaderText("The correct word is:");
+                alert.showAndWait();
+                break;
+            case "Lose":
+                alert.setTitle("YOU LOSE!");
+                alert.setContentText(word);
+                alert.setHeaderText("The correct word is:");
+                alert.showAndWait();
+                break;
+        }
+    }
 }

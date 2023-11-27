@@ -52,6 +52,7 @@ public class MyDictionary extends Singleton<MyDictionary> implements CustomDicti
         System.out.println("2 current word target: " + Cache.getCurrentEnViWordTarget());
         System.out.println("2 current word definition: " + Cache.getCurrentEnViWordDefinition());
         return enToViDic.get(word).getWordDefinition();
+
     }
 
     @Override
@@ -59,6 +60,7 @@ public class MyDictionary extends Singleton<MyDictionary> implements CustomDicti
         enToViDic.remove(target);
         Cache.setCurrentEnViWordByTargetAndDefinition(target, definition);
         enToViDic.put(target, Cache.getCurrentEnViWord());
+
     }
 }
 

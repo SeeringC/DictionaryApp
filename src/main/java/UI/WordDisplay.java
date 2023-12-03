@@ -1,7 +1,7 @@
 package UI;
 
+import Manager.AppDataManager;
 import Manager.UIManager;
-import com.example.translatetest1.Cache;
 import com.example.translatetest1.MyDictionary;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -25,7 +25,7 @@ public class WordDisplay implements UILayer {
     }
 
     @Override
-    public void onCLose() {
+    public void onClose() {
 
     }
 
@@ -57,19 +57,13 @@ public class WordDisplay implements UILayer {
     }
 
     public void displaySearchedWord() {
-        wordTarget.setText(Cache.getCurrentEnViWordTarget());
-        wordDefinition.setText(handleString(Cache.getCurrentEnViWordDefinition()));
+        wordTarget.setText(AppDataManager.getIns(AppDataManager.class).getCurrentEnViWordTarget());
+        wordDefinition.setText(formatString(AppDataManager.getIns(AppDataManager.class).getCurrentEnViWordDefinition()));
     }
 
-    public String handleString(String s) {
-        String xuongdong = "<br />";
-        String delete_first = "<I><Q>";
-        String delete_behind = "</Q></I>";
-        String endl = "" + '\n';
-        s = s.replaceAll(xuongdong, endl);
-        s = s.replaceAll(delete_behind, "");
-        s = s.replaceAll(delete_first, "");
-        return s;
+    private String formatString(String s) {
+        return s.replaceAll("<br />", "\n")
+                .replaceAll("</Q></I>", "")
+                .replaceAll("<I><Q>", "");
     }
-
 }

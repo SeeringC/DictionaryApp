@@ -1,7 +1,8 @@
 package com.example.translatetest1;
 
-import Manager.DataManager;
-import Manager.UIManager;
+import AlertDisplay.*;
+import Manager.AppDataManager;
+import Manager.DataBaseManager;
 import Singleton.Singleton;
 
 import java.util.Dictionary;
@@ -10,6 +11,7 @@ import java.util.Hashtable;
 public class MyDictionary extends Singleton<MyDictionary> implements CustomDictionary {
 
     public Dictionary<String, EnViWord> enToViDic = new Hashtable<>();
+    private CustomAlert customAlert;
 
     @Override
     public <T extends Word> void loadWordFromSQL(T word) {
@@ -21,13 +23,17 @@ public class MyDictionary extends Singleton<MyDictionary> implements CustomDicti
     @Override
     public void addWordToDic(String word, String definition) {
         if (!isWordInDic(word)) {
-            Cache.setCurrentEnViWordByTargetAndDefinition(word, definition);
-            enToViDic.put(word, Cache.getCurrentEnViWord());
+            EnViWord enViWord = new EnViWord(word, definition);
+            enToViDic.put(word, enViWord);
 
-            DataManager.getIns(DataManager.class).addWordtoSQL(word, definition);
-            UIManager.getIns(UIManager.class).displayAlert("AddSuccess", word);
+            DataBaseManager.getIns(DataBaseManager.class).addWordtoSQL(word, definition);
+
+            setCustomAlert(new AddWordSuccessAlert());
+            customAlert.displayAlert(word);
+
         } else {
-            UIManager.getIns(UIManager.class).displayAlert("AddFailed", word);
+            setCustomAlert(new AddWordFailedAlert());
+            customAlert.displayAlert(word);
         }
     }
 
@@ -39,18 +45,19 @@ public class MyDictionary extends Singleton<MyDictionary> implements CustomDicti
     @Override
     public void deleteWordInDic(String word) {
         enToViDic.remove(word);
-        DataManager.getIns(DataManager.class).deleteWordSQL(word);
-        UIManager.getIns(UIManager.class).displayAlert("DeleteWordSuccess", word);
+        DataBaseManager.getIns(DataBaseManager.class).deleteWordSQL(word);
+
+        setCustomAlert(new DeleteWordSuccessAlert());
+        customAlert.displayAlert(word);
     }
 
     @Override
     public String lookUpWordInDic(String word) {
         if (word == null || enToViDic.get(word) == null) {
-            UIManager.getIns(UIManager.class).displayAlert("SearchWordFailed", word);
+            setCustomAlert(new SearchWordFailedAlert());
+            customAlert.displayAlert(word);
             return null;
         }
-        System.out.println("2 current word target: " + Cache.getCurrentEnViWordTarget());
-        System.out.println("2 current word definition: " + Cache.getCurrentEnViWordDefinition());
         return enToViDic.get(word).getWordDefinition();
 
     }
@@ -58,9 +65,13 @@ public class MyDictionary extends Singleton<MyDictionary> implements CustomDicti
     @Override
     public void changeWordDefinition(String target, String definition) {
         enToViDic.remove(target);
-        Cache.setCurrentEnViWordByTargetAndDefinition(target, definition);
-        enToViDic.put(target, Cache.getCurrentEnViWord());
+        AppDataManager.getIns(AppDataManager.class).setCurrentEnViWordByTargetAndDefinition(target, definition);
+        enToViDic.put(target, AppDataManager.getIns(AppDataManager.class).getCurrentEnViWord());
 
+    }
+
+    public void setCustomAlert(CustomAlert customAlert) {
+        this.customAlert = customAlert;
     }
 }
 

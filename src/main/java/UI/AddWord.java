@@ -27,7 +27,7 @@ public class AddWord implements UILayer {
     }
 
     @Override
-    public void onCLose() {
+    public void onClose() {
 
     }
     @FXML

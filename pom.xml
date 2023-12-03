@@ -36,6 +36,11 @@
             <version>11.1.1</version>
         </dependency>
         <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-web</artifactId>
+            <version>22-ea+16</version>
+        </dependency>
+        <dependency>
             <groupId>org.kordamp.ikonli</groupId>
             <artifactId>ikonli-javafx</artifactId>
             <version>12.3.1</version>

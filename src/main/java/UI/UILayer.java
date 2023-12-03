@@ -4,5 +4,5 @@ public interface UILayer {
 
     void onInit();
 
-    void onCLose();
+    void onClose();
 }

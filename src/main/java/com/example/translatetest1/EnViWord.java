@@ -1,6 +1,6 @@
 package com.example.translatetest1;
 
-public class EnViWord extends Word {
+public class EnViWord extends Word<EnViWord> {
     /**
      * Constructor new Word.
      *

@@ -37,7 +37,7 @@ public class Translator implements UILayer {
     }
 
     @Override
-    public void onCLose() {
+    public void onClose() {
 
     }
 
@@ -47,68 +47,65 @@ public class Translator implements UILayer {
     }
 
     @FXML
-    private void switchlanguage(ActionEvent event) {
-        String s = first.getText();
+    private void switchLanguage(ActionEvent event) {
+        swapLabels(first, second);
+        swapTextFields(inputWord, outputWord);
+    }
+
+    private void swapLabels(Label first, Label second) {
+        String temp = first.getText();
         first.setText(second.getText());
-        second.setText(s);
-        String ss = inputWord.getText();
+        second.setText(temp);
+    }
+
+    private void swapTextFields(TextField inputWord, TextArea outputWord) {
+        String temp = inputWord.getText();
         inputWord.setText(outputWord.getText());
-        outputWord.setText(ss);
+        outputWord.setText(temp);
     }
 
     @FXML
     private void translateWord(KeyEvent event) throws IOException {
-        String aa = first.getText().toLowerCase();
-        String bb = second.getText().toLowerCase();
-        aa = aa.substring(0, 2);
-        bb = bb.substring(0, 2);
-            String word = inputWord.getText();
-            String translatedWord = translate(aa, bb, word);
-            outputWord.setText(translatedWord);
+        String fromLanguage = first.getText();
+        String toLanguage = second.getText();
+        String word = inputWord.getText();
+        String translatedWord = translate(fromLanguage, toLanguage, word);
+        outputWord.setText(translatedWord);
+    }
 
+    private String getLanguageCode(Label label) {
+        return label.getText().toLowerCase().substring(0, 2);
     }
 
     @FXML
     private void speakWord(ActionEvent event) {
-        SoundManager.getIns(SoundManager.class).setWordToSpeak(inputWord.getText());
-        SoundManager.getIns(SoundManager.class).speakWord();
+        SoundManager.getIns(SoundManager.class).speakWord(inputWord.getText());
     }
 
-    private static String translate(String langFrom, String langTo, String text) throws IOException {
-        // INSERT YOU URL HERE
-        String urlStr = "https://script.google.com/macros/s/AKfycbyXrwuAli6fGFhO_SkvG749ydnrNkcLSCpC9EfMUtOc-6KdpPB_RDOeLGCIFWZXk3uT/exec" +
+    private String translate(String langFrom, String langTo, String text) throws IOException {
+        String urlStr = buildUrl(langFrom, langTo, text);
+        return sendGetRequest(urlStr);
+    }
+    private String buildUrl(String langFrom, String langTo, String text) throws IOException {
+        return "https://script.google.com/macros/s/AKfycbyXrwuAli6fGFhO_SkvG749ydnrNkcLSCpC9EfMUtOc-6KdpPB_RDOeLGCIFWZXk3uT/exec" +
                 "?q=" + URLEncoder.encode(text, "UTF-8") +
                 "&target=" + langTo +
                 "&source=" + langFrom;
+    }
 
+    private String sendGetRequest(String urlStr) throws IOException {
         URL url = new URL(urlStr);
-        StringBuilder response = new StringBuilder();
-
-
         HttpURLConnection con = (HttpURLConnection) url.openConnection();
-
         con.setRequestProperty("User-Agent", "Mozilla/5.0");
-
-        //slow here
-        long startTime = System.nanoTime();
-
         BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
-
-        long endTime = System.nanoTime();
-        System.out.println("Time = : "
-                + (endTime - startTime) / 1000000 + " ms");
-        //
-
+        StringBuilder response = new StringBuilder();
         String inputLine;
         while ((inputLine = in.readLine()) != null) {
             response.append(inputLine);
         }
         in.close();
-
         return response.toString();
     }
-
-
 }
 
 

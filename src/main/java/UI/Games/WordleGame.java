@@ -1,5 +1,8 @@
 package UI.Games;
 
+import AlertDisplay.CustomAlert;
+import AlertDisplay.LoseWordleGameAlert;
+import AlertDisplay.WinWordleGameAlert;
 import Manager.UIManager;
 import UI.UILayer;
 import com.example.translatetest1.MyDictionary;
@@ -12,16 +15,17 @@ import javafx.scene.layout.Pane;
 
 import java.io.IOException;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class WordleGame implements UILayer {
 
-    private final int WORD_LENGTH = 5;
-    private final int GUESS_TURN = 6;
-//    private char[] answerWord = new char[WORD_LENGTH];
+    private static final int WORD_LENGTH = 5;
+    private static final int GUESS_TURN = 6;
     private List<String> answerWord = new ArrayList<>();
     private List<String> tempAnswerWord = new ArrayList<>();
-    private TextField[][] textFieldsArr = new TextField[6][5];
-    private ArrayList<String> wordsList = new ArrayList<String>();
+    private TextField[][] textFieldsArr = new TextField[GUESS_TURN][WORD_LENGTH];
+    private ArrayList<String> wordsList = new ArrayList<>();
+    private CustomAlert customAlert;
 
     @FXML
     private Pane currentPane;
@@ -30,102 +34,20 @@ public class WordleGame implements UILayer {
 
     @Override
     public void onInit() {
-        loadGame();
         loadWords();
         assignRandomWordToAnswerWord();
+        loadGame();
     }
 
     @Override
-    public void onCLose() {
+    public void onClose() {
 
     }
+
 
     @FXML
     public void switchToGame(ActionEvent event) throws IOException {
         UIManager.getIns(UIManager.class).openScene(currentPane, "Game.fxml");
-    }
-
-    public void loadGame() {
-        for (int row = 0; row < GUESS_TURN; row++) {
-            for (int col = 0; col < WORD_LENGTH; col++) {
-                TextField textField = new TextField();
-                // Limit input to a single character
-                textField.textProperty().addListener((observable, oldValue, newValue) -> {
-                    if (newValue.length() > 1) {
-                        textField.setText(newValue.substring(0, 1));
-                    }
-                });
-                textFieldsArr[row][col] = textField;  // Store the TextField in the array
-                wordleGridPane.add(textField, col, row);
-            }
-        }
-        moveToNextTextField();
-    }
-
-
-    public void moveToNextTextField() {
-        for (int row = 0; row < GUESS_TURN; row++) {
-            for (int col = 0; col < WORD_LENGTH; col++) {
-                int finalCol = col;
-                int finalRow = row;
-                textFieldsArr[row][col].setOnKeyPressed(event -> {
-                    if (event.getCode() == KeyCode.BACK_SPACE && finalCol != 0 && textFieldsArr[finalRow][finalCol].getText().isEmpty()) {
-                        textFieldsArr[finalRow][finalCol - 1].requestFocus();
-                    }
-                });
-                textFieldsArr[row][col].textProperty().addListener((observable, oldValue, newValue) -> {
-                    if (newValue.length() >= 1 && oldValue.length() < 1) {
-                        if (finalCol != WORD_LENGTH - 1) {
-                            textFieldsArr[finalRow][finalCol + 1].requestFocus();
-                        } else if (finalRow != GUESS_TURN - 1) {
-                            textFieldsArr[finalRow + 1][0].requestFocus();
-                        }
-                        if (finalCol == WORD_LENGTH - 1) {
-                            showResult(finalRow);
-                        }
-                    }
-                });
-            }
-        }
-    }
-
-
-    public void showResult(int row) {
-        int correctCharGuessed = 0;
-        for (int col = 0; col < WORD_LENGTH; col++) {
-//            System.out.println("text here is: " + String.valueOf(textFieldsArr[row][col].getText().charAt(0)));
-//            System.out.println("Temp answer word: " + tempAnswerWord.contains(textFieldsArr[row][col].getText()));
-            System.out.println("the text here is: " + String.valueOf(textFieldsArr[row][col].getText()));
-            System.out.println("the answer here is: " + String.valueOf(answerWord.get(col)));
-            if (Objects.equals(textFieldsArr[row][col].getText(), answerWord.get(col))) {
-                textFieldsArr[row][col].setStyle("-fx-background-color: green;");
-                tempAnswerWord.remove(textFieldsArr[row][col].getText());
-                correctCharGuessed++;
-            } else if (answerWord.contains(textFieldsArr[row][col].getText())) {
-                textFieldsArr[row][col].setStyle("-fx-background-color: yellow;");
-                tempAnswerWord.remove((textFieldsArr[row][col].getText()));
-            } else {
-                textFieldsArr[row][col].setStyle("-fx-background-color: grey;");
-                tempAnswerWord.remove((textFieldsArr[row][col].getText()));
-            }
-//            System.out.println("Temp answer word: " + tempAnswerWord.get(col));
-        }
-
-        if (correctCharGuessed == WORD_LENGTH) {
-            String answerString = "";
-            for (int i = 0; i < answerWord.size(); i++) {
-                answerString += answerWord.get(i);
-            }
-            UIManager.getIns(UIManager.class).displayWordleGameAlert("Win", answerString.toString());
-        }
-        if (row == GUESS_TURN - 1) {
-            String answerString = "";
-            for (int i = 0; i < answerWord.size(); i++) {
-                answerString += answerWord.get(i);
-            }
-            UIManager.getIns(UIManager.class).displayWordleGameAlert("Lose", answerString.toString());
-        }
-        tempAnswerWord.addAll(answerWord);
     }
 
     private void loadWords() {
@@ -139,17 +61,118 @@ public class WordleGame implements UILayer {
     }
 
     private void assignRandomWordToAnswerWord() {
-        Random randomWord = new Random();
-        int index = randomWord.nextInt(wordsList.size());
-
-        String randomedWord = wordsList.get(index);
-        System.out.println("The word is: " + randomedWord);
-
-        for (int i = 0; i < WORD_LENGTH; i++) {
-            answerWord.add(String.valueOf(randomedWord.charAt(i)));
-        }
+        String randomWord = getRandomWord();
+        System.out.println("The word is: " + randomWord);
+        answerWord = Arrays.asList(randomWord.split(""));
         tempAnswerWord.addAll(answerWord);
-
     }
 
+    public void loadGame() {
+        for (int row = 0; row < GUESS_TURN; row++) {
+            for (int col = 0; col < WORD_LENGTH; col++) {
+                TextField textField = createTextField();
+                textFieldsArr[row][col] = textField;
+                wordleGridPane.add(textField, col, row);
+            }
+        }
+        moveToNextTextField();
+    }
+
+    private TextField createTextField() {
+        TextField textField = new TextField();
+        textField.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue.length() > 1) {
+                textField.setText(newValue.substring(0, 1));
+            }
+        });
+        return textField;
+    }
+
+    public void moveToNextTextField() {
+        for (int row = 0; row < GUESS_TURN; row++) {
+            for (int col = 0; col < WORD_LENGTH; col++) {
+                handleKeyPress(row, col);
+                handleTextChange(row, col);
+            }
+        }
+    }
+
+    private void handleKeyPress(int row, int col) {
+        textFieldsArr[row][col].setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.BACK_SPACE && col != 0 && textFieldsArr[row][col].getText().isEmpty()) {
+                textFieldsArr[row][col - 1].requestFocus();
+            }
+        });
+    }
+
+    private void handleTextChange(int row, int col) {
+        textFieldsArr[row][col].textProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue.length() >= 1 && oldValue.length() < 1) {
+                if (col != WORD_LENGTH - 1) {
+                    textFieldsArr[row][col + 1].requestFocus();
+                } else if (row != GUESS_TURN - 1) {
+                    textFieldsArr[row + 1][0].requestFocus();
+                }
+                if (col == WORD_LENGTH - 1) {
+                    showResult(row);
+                }
+            }
+        });
+    }
+
+    private String getRandomWord() {
+        Random random = new Random();
+        int index = random.nextInt(wordsList.size());
+        return wordsList.get(index);
+    }
+
+    public void showResult(int row) {
+        int correctCharGuessed = 0;
+        for (int col = 0; col < WORD_LENGTH; col++) {
+            correctCharGuessed += checkGuess(row, col);
+        }
+
+        if (correctCharGuessed == WORD_LENGTH) {
+            displayWinAlert();
+        }
+        if (row == GUESS_TURN - 1) {
+            displayLoseAlert();
+        }
+        tempAnswerWord.addAll(answerWord);
+    }
+
+    private int checkGuess(int row, int col) {
+        String guess = textFieldsArr[row][col].getText();
+        String answer = answerWord.get(col);
+        if (Objects.equals(guess, answer)) {
+            textFieldsArr[row][col].setStyle("-fx-background-color: green;");
+            tempAnswerWord.remove(guess);
+            return 1;
+        } else if (answerWord.contains(guess)) {
+            textFieldsArr[row][col].setStyle("-fx-background-color: yellow;");
+            tempAnswerWord.remove(guess);
+        } else {
+            textFieldsArr[row][col].setStyle("-fx-background-color: grey;");
+            tempAnswerWord.remove(guess);
+        }
+        return 0;
+    }
+
+    public void setCustomAlert(CustomAlert customAlert) {
+        this.customAlert = customAlert;
+    }
+    private void displayWinAlert() {
+        setCustomAlert(new WinWordleGameAlert());
+        customAlert.displayAlert(getAnswerString());
+    }
+
+    private void displayLoseAlert() {
+        setCustomAlert(new LoseWordleGameAlert());
+        customAlert.displayAlert(getAnswerString());
+    }
+
+    private String getAnswerString() {
+        return answerWord.stream().collect(Collectors.joining());
+    }
 }
+

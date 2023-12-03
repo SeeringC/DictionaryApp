@@ -7,7 +7,7 @@ public class Bookmarks implements UILayer {
     }
 
     @Override
-    public void onCLose() {
+    public void onClose() {
 
     }
 }

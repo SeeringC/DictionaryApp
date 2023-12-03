@@ -34,7 +34,7 @@ public class LookUpWord implements Initializable, UILayer {
     }
 
     @Override
-    public void onCLose() {
+    public void onClose() {
 
     }
 

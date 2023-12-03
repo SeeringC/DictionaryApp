@@ -2,6 +2,7 @@ module com.example.translatetest1 {
     requires javafx.controls;
     requires javafx.fxml;
     requires javafx.base;
+    requires javafx.media;
 
     requires org.controlsfx.controls;
     requires org.kordamp.ikonli.javafx;
@@ -14,6 +15,7 @@ module com.example.translatetest1 {
     requires java.net.http;
     requires com.jfoenix;
     requires java.desktop;
+    requires javafx.web;
 
     opens com.example.translatetest1 to javafx.fxml;
     exports com.example.translatetest1;
@@ -25,4 +27,5 @@ module com.example.translatetest1 {
     opens UI to javafx.fxml;
     exports UI.Games;
     opens UI.Games to javafx.fxml;
+    exports AlertDisplay;
 }

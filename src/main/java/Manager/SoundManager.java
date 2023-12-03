@@ -8,17 +8,8 @@ import javax.speech.synthesis.SynthesizerModeDesc;
 import java.util.Locale;
 
 public class SoundManager extends Singleton<SoundManager> {
-    private String wordToSpeak;
 
-    public String getWordToSpeak() {
-        return wordToSpeak;
-    }
-
-    public void setWordToSpeak(String wordToSpeak) {
-        this.wordToSpeak = wordToSpeak;
-    }
-
-    public void speakWord() {
+    public void speakWord(String wordToSpeak) {
         try
         {
 //setting properties as Kevin Dictionary

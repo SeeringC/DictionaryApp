@@ -1,7 +1,7 @@
 package UI;
 
+import Manager.AppDataManager;
 import Manager.UIManager;
-import com.example.translatetest1.Cache;
 import com.example.translatetest1.MyDictionary;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -24,14 +24,13 @@ public class HelloApplication implements Initializable, UILayer {
     private TextField searchWord;
     @FXML
     private Pane currentPane;
-
     @Override
     public void onInit() {
 
     }
 
     @Override
-    public void onCLose() {
+    public void onClose() {
 
     }
     @Override
@@ -83,12 +82,9 @@ public class HelloApplication implements Initializable, UILayer {
 
     @FXML
     private void searchWord(ActionEvent event) throws IOException {
-        System.out.println("1 Searched word target: " + searchWord.getText());
-        System.out.println("1 Searched word definition: " + MyDictionary.getIns(MyDictionary.class).enToViDic.get(searchWord.getText()).getWordDefinition());
-
-        System.out.println("1 current word target: " + Cache.getCurrentEnViWordTarget());
-        System.out.println("1 current word definition: " + Cache.getCurrentEnViWordDefinition());
-        Cache.setCurrentEnViWordByTargetAndDefinition(searchWord.getText(), MyDictionary.getIns(MyDictionary.class).lookUpWordInDic(searchWord.getText()));
+        AppDataManager.getIns(AppDataManager.class).setCurrentEnViWordByTargetAndDefinition(
+                searchWord.getText(),
+                MyDictionary.getIns(MyDictionary.class).lookUpWordInDic(searchWord.getText()));
         UIManager.getIns(UIManager.class).openScene(currentPane, "WordDisplay.fxml");
     }
 //    @FXML

@@ -1,14 +1,168 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="UI.FileTranslator"
-            prefHeight="400.0" prefWidth="600.0">
-
-</AnchorPane>
+<Pane fx:id="currentPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#backToMainMenu" prefHeight="865.0" prefWidth="1536.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.FileTranslator">
+   <children>
+      <ImageView fitHeight="864.0" fitWidth="1536.0" pickOnBounds="true">
+         <image>
+            <Image url="@../../../Images/BackGround.png" />
+         </image>
+      </ImageView>
+      <BorderPane layoutX="6.0" layoutY="-6.0" prefHeight="864.0" prefWidth="1536.0">
+         <bottom>
+            <AnchorPane prefHeight="503.0" prefWidth="1536.0" BorderPane.alignment="CENTER">
+               <children>
+                  <AnchorPane layoutX="62.0" layoutY="111.0" prefHeight="306.0" prefWidth="561.0">
+                     <children>
+                        <JFXTextArea fx:id="contentToTranslate" layoutX="15.0" layoutY="-4.0" prefHeight="267.0" prefWidth="611.0" styleClass="text_area" stylesheets="@CSS/CSSTEST.css" text="Hi, my name is Nguyen&#10;&#10;&#10;" AnchorPane.bottomAnchor="43.19999999999999" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="8.0">
+                           <font>
+                              <Font name="Oxanium Regular" size="22.0" />
+                           </font>
+                        </JFXTextArea>
+                        <Pane prefHeight="267.0" prefWidth="14.0" styleClass="left-text-area" stylesheets="@CSS/CSSTEST.css" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutX="935.0" layoutY="103.0" prefHeight="306.0" prefWidth="555.0">
+                     <children>
+                        <JFXTextArea fx:id="translatedContent" prefHeight="267.0" prefWidth="611.0" styleClass="text_area" stylesheets="@CSS/CSSTEST.css" text="Hi, my name is Nguyen&#10;&#10;&#10;" AnchorPane.bottomAnchor="37.0" AnchorPane.leftAnchor="18.0" AnchorPane.rightAnchor="5.0">
+                           <font>
+                              <Font name="Oxanium Regular" size="22.0" />
+                           </font>
+                        </JFXTextArea>
+                        <Pane layoutY="3.0" prefHeight="266.0" prefWidth="16.0" styleClass="left-text-area" stylesheets="@CSS/CSSTEST.css" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutX="664.0" layoutY="155.0" prefHeight="104.0" prefWidth="309.0" styleClass="parent" stylesheets="@CSS/CSSTEST.css">
+                     <children>
+                        <Pane layoutX="-1.0" layoutY="34.0" prefHeight="57.0" prefWidth="240.0" styleClass="left-text-button__border" stylesheets="@CSS/CSSTEST.css" AnchorPane.bottomAnchor="13.0" AnchorPane.leftAnchor="-1.0" AnchorPane.topAnchor="34.0" />
+                        <Pane layoutY="35.0" prefHeight="55.0" prefWidth="243.0" styleClass="left-text-button__background" stylesheets="@CSS/CSSTEST.css" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="35.0" />
+                        <Pane layoutX="6.0" layoutY="34.0" prefHeight="54.0" prefWidth="205.0" styleClass="text-button__body" stylesheets="@CSS/CSSTEST.css" AnchorPane.bottomAnchor="13.0" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="99.0" AnchorPane.topAnchor="34.0" />
+                        <JFXButton alignment="BASELINE_LEFT" layoutX="7.0" layoutY="31.0" onAction="#translateFileContent" prefHeight="64.0" prefWidth="240.0" styleClass="text-button__text" stylesheets="@CSS/CSSTEST.css" text="Translate File" textFill="#00e1ff">
+                           <graphic>
+                              <FontIcon iconColor="#00e1ff" iconLiteral="fab-perbyte" />
+                           </graphic>
+                           <font>
+                              <Font size="25.0" />
+                           </font>
+                        </JFXButton>
+                        <Text fill="#05dff7" layoutX="24.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PROCEED TO EXECUTION IN PRIORITIZING PROGRAM" wrappingWidth="25.470008850097656">
+                           <font>
+                              <Font size="2.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </AnchorPane>
+                  <Pane layoutX="1298.0" layoutY="367.0" prefHeight="74.0" prefWidth="167.0">
+                     <children>
+                        <Label alignment="BASELINE_CENTER" layoutX="11.0" layoutY="12.0" prefHeight="58.0" prefWidth="61.0" styleClass="image-button" stylesheets="@CSS/CSSTEST.css" text="ESC">
+                           <font>
+                              <Font size="27.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="84.0" layoutY="15.0" text="Close" textFill="#cf0e0e">
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <JFXButton fx:id="switchLanguageBtn" contentDisplay="BOTTOM" layoutX="727.0" layoutY="20.0" maxHeight="-Infinity" maxWidth="-Infinity" onAction="#switchLanguage" prefHeight="70.0" prefWidth="70.0" styleClass="image-button" stylesheets="@CSS/CSSTEST.css" text="Button" textFill="TRANSPARENT">
+                     <graphic>
+                        <FontIcon iconColor="#05dff7" iconLiteral="fas-sync-alt" iconSize="30" text="" wrappingWidth="30.0" />
+                     </graphic>
+                     <font>
+                        <Font size="1.0" />
+                     </font>
+                  </JFXButton>
+                  <Label fx:id="langFrom" alignment="BASELINE_CENTER" contentDisplay="CENTER" layoutX="474.0" layoutY="21.0" prefHeight="65.0" prefWidth="126.0" styleClass="label--language" stylesheets="@CSS/CSSTEST.css" text="En" textAlignment="CENTER">
+                     <font>
+                        <Font name="Oxanium Regular" size="43.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="langTo" alignment="BASELINE_CENTER" layoutX="952.0" layoutY="22.0" prefHeight="66.0" prefWidth="139.0" styleClass="label--language" stylesheets="@CSS/CSSTEST.css" text="Vi" textAlignment="CENTER">
+                     <font>
+                        <Font size="43.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+         </bottom>
+         <top>
+            <AnchorPane prefHeight="0.0" prefWidth="1536.0" BorderPane.alignment="CENTER">
+               <children>
+                  <AnchorPane layoutX="407.0" layoutY="-34.0" prefHeight="0.0" prefWidth="289.0">
+                     <children>
+                        <ImageView fitHeight="60.0" fitWidth="138.0" layoutX="87.0" layoutY="53.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="89.0" AnchorPane.leftAnchor="87.0" AnchorPane.rightAnchor="534.0" AnchorPane.topAnchor="53.0">
+                           <image>
+                              <Image url="@../../../Images/completeATAST.png" />
+                           </image>
+                        </ImageView>
+                        <Text fill="#00bfff" layoutX="228.0" layoutY="99.0" strokeType="OUTSIDE" strokeWidth="0.0" text="File Translator" wrappingWidth="407.483154296875" AnchorPane.bottomAnchor="107.09000091552736" AnchorPane.leftAnchor="228.0" AnchorPane.rightAnchor="123.71684570312505" AnchorPane.topAnchor="58.709999084472656">
+                           <font>
+                              <Font name="Oxanium Regular" size="51.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </AnchorPane>
+                  <ImageView fitHeight="46.0" fitWidth="151.0" layoutX="34.0" layoutY="77.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../Images/PROTOCO6520.png" />
+                     </image>
+                  </ImageView>
+                  <AnchorPane layoutX="143.0" layoutY="186.0" prefHeight="104.0" prefWidth="309.0" styleClass="parent" stylesheets="@CSS/CSSTEST.css">
+                     <children>
+                        <Pane layoutX="-1.0" layoutY="34.0" prefHeight="57.0" prefWidth="240.0" styleClass="left-text-button__border" stylesheets="@CSS/CSSTEST.css" AnchorPane.bottomAnchor="13.0" AnchorPane.leftAnchor="-1.0" AnchorPane.topAnchor="34.0" />
+                        <Pane layoutY="35.0" prefHeight="55.0" prefWidth="243.0" styleClass="left-text-button__background" stylesheets="@CSS/CSSTEST.css" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="35.0" />
+                        <Pane layoutX="6.0" layoutY="34.0" prefHeight="54.0" prefWidth="205.0" styleClass="text-button__body" stylesheets="@CSS/CSSTEST.css" AnchorPane.bottomAnchor="13.0" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="99.0" AnchorPane.topAnchor="34.0" />
+                        <JFXButton alignment="BASELINE_LEFT" layoutX="7.0" layoutY="19.0" onAction="#browseFile" prefHeight="112.0" prefWidth="452.0" styleClass="text-button__text" stylesheets="@CSS/CSSTEST.css" text="  Browse" textFill="#00e1ff">
+                           <graphic>
+                              <FontIcon iconColor="#00e1ff" iconLiteral="fas-file-import" />
+                           </graphic>
+                           <font>
+                              <Font size="46.0" />
+                           </font>
+                        </JFXButton>
+                        <Text fill="#05dff7" layoutX="42.0" layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PROCEED TO EXECUTION IN PRIORITIZING PROGRAM" wrappingWidth="51.870033264160156">
+                           <font>
+                              <Font size="4.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutX="1106.0" layoutY="187.0" prefHeight="104.0" prefWidth="309.0" styleClass="parent" stylesheets="@CSS/CSSTEST.css">
+                     <children>
+                        <Pane layoutX="-1.0" layoutY="34.0" prefHeight="57.0" prefWidth="240.0" styleClass="left-text-button__border" stylesheets="@CSS/CSSTEST.css" AnchorPane.bottomAnchor="13.0" AnchorPane.leftAnchor="-1.0" AnchorPane.topAnchor="34.0" />
+                        <Pane layoutY="35.0" prefHeight="55.0" prefWidth="243.0" styleClass="left-text-button__background" stylesheets="@CSS/CSSTEST.css" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="35.0" />
+                        <Pane layoutX="6.0" layoutY="34.0" prefHeight="54.0" prefWidth="205.0" styleClass="text-button__body" stylesheets="@CSS/CSSTEST.css" AnchorPane.bottomAnchor="13.0" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="99.0" AnchorPane.topAnchor="34.0" />
+                        <JFXButton alignment="BASELINE_LEFT" layoutX="7.0" layoutY="12.0" onAction="#exportFile" prefHeight="114.0" prefWidth="452.0" styleClass="text-button__text" stylesheets="@CSS/CSSTEST.css" text="  Export" textFill="#00e1ff">
+                           <font>
+                              <Font size="46.0" />
+                           </font>
+                           <graphic>
+                              <FontIcon iconColor="#00e1ff" iconLiteral="fas-file-export" />
+                           </graphic>
+                        </JFXButton>
+                        <Text fill="#05dff7" layoutX="36.0" layoutY="101.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PROCEED TO EXECUTION IN PRIORITIZING PROGRAM" wrappingWidth="50.270179748535156">
+                           <font>
+                              <Font size="4.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+         </top>
+      </BorderPane>
+   </children>
+</Pane>

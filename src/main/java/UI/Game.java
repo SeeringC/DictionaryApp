@@ -17,7 +17,7 @@ public class Game implements UILayer {
     }
 
     @Override
-    public void onCLose() {
+    public void onClose() {
 
     }
 

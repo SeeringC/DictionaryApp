@@ -2,7 +2,7 @@ package com.example.translatetest1;
 
 import java.util.Objects;
 
-public class Word {
+public class Word<T extends Word> {
     private String wordTarget;
     private String wordExplain;
 

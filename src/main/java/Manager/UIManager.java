@@ -4,7 +4,6 @@ import Singleton.Singleton;
 import UI.UILayer;
 import com.example.translatetest1.Main;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Alert;
 import javafx.scene.layout.Pane;
 
 import java.io.IOException;
@@ -24,57 +23,5 @@ public class UIManager extends Singleton<UIManager> {
         currentPane.getChildren().removeAll();
         currentPane.getChildren().setAll(nextPane);
 
-    }
-
-    public void displayAlert(String type, String word) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        switch (type) {
-            case "AddWordSuccess" :
-                alert.setTitle("Information dialog");
-                alert.setContentText("Từ " + word + " đã được thêm thành công!");
-                alert.setHeaderText("Thông báo");
-                alert.showAndWait();
-                break;
-
-            case "AddWordFailed" :
-                alert.setTitle("Information dialog");
-                alert.setContentText("Từ " + word + " đã tồn tại trong từ điển!");
-                alert.setHeaderText("Thông báo");
-                alert.showAndWait();
-                break;
-
-            case "DeleteWordSuccess" :
-                alert.setTitle("Information dialog");
-                alert.setContentText("Từ " + word + " đã được xóa thành công!");
-                alert.setHeaderText("Thông báo");
-                alert.showAndWait();
-                break;
-
-            case "SearchWordFailed" :
-                alert.setTitle("Information dialog");
-                alert.setContentText("Từ " + word + " không tồn tại trong từ điển!");
-                alert.setHeaderText("Thông báo");
-                alert.showAndWait();
-                break;
-        }
-
-    }
-
-    public void displayWordleGameAlert(String type, String word) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        switch (type) {
-            case "Win":
-                alert.setTitle("YOU WIN!");
-                alert.setContentText(word);
-                alert.setHeaderText("The correct word is:");
-                alert.showAndWait();
-                break;
-            case "Lose":
-                alert.setTitle("YOU LOSE!");
-                alert.setContentText(word);
-                alert.setHeaderText("The correct word is:");
-                alert.showAndWait();
-                break;
-        }
     }
 }

@@ -1,17 +1,111 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
-<Pane fx:id="currentPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.AddWord">
-   <AnchorPane prefHeight="400.0" prefWidth="600.0">
-      <children>
-         <Label layoutX="14.0" layoutY="5.0" text="Nhập từ cần thêm" />
-         <TextField fx:id="addbox1" layoutX="1.0" layoutY="46.0" prefHeight="26.0" prefWidth="522.0" />
-         <TextField fx:id="addbox2" layoutY="186.0" prefHeight="102.0" prefWidth="600.0" />
-         <Label layoutX="18.0" layoutY="146.0" text="Nhập định nghĩa" />
-         <Button fx:id="bt1" layoutX="533.0" layoutY="361.0" mnemonicParsing="false" onAction="#Success" text="Nhập" />
-         <Button layoutX="14.0" layoutY="361.0" mnemonicParsing="false" onAction="#switchToHelloApplication" text="Back" />
-      </children>
-   </AnchorPane>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<Pane fx:id="currentPane" focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#backToMainMenu" prefHeight="865.0" prefWidth="1536.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.AddWord">
+   <ImageView fitHeight="864.0" fitWidth="1536.0" pickOnBounds="true">
+      <image>
+         <Image url="@../../../Images/BackGround.png" />
+      </image>
+   </ImageView>
+   <BorderPane prefHeight="865.0" prefWidth="1536.0">
+      <top>
+         <AnchorPane prefHeight="106.0" prefWidth="1536.0" BorderPane.alignment="CENTER">
+            <children>
+               <AnchorPane layoutX="356.0" layoutY="-34.0" prefHeight="111.0" prefWidth="787.0">
+                  <children>
+                     <ImageView fitHeight="60.0" fitWidth="138.0" layoutX="87.0" layoutY="53.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="87.0" AnchorPane.rightAnchor="534.0" AnchorPane.topAnchor="53.0">
+                        <image>
+                           <Image url="@../../../Images/completeATAST.png" />
+                        </image>
+                     </ImageView>
+                     <Text fill="#00bfff" layoutX="228.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ADD NEW WORD" wrappingWidth="444.2830810546875" AnchorPane.leftAnchor="228.0" AnchorPane.rightAnchor="93.0" AnchorPane.topAnchor="54.0">
+                        <font>
+                           <Font name="Oxanium Regular" size="51.0" />
+                        </font>
+                     </Text>
+                  </children>
+               </AnchorPane>
+               <ImageView fitHeight="46.0" fitWidth="151.0" layoutX="34.0" layoutY="77.0" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                     <Image url="@../../../Images/PROTOCO6520.png" />
+                  </image>
+               </ImageView>
+            </children>
+         </AnchorPane>
+      </top>
+      <bottom>
+         <AnchorPane prefHeight="735.0" prefWidth="1536.0" BorderPane.alignment="CENTER">
+            <children>
+               <Label layoutX="152.0" layoutY="38.0" prefHeight="10.0" prefWidth="475.0" text="INPUT WORD TARGET" textFill="#9e1818">
+                  <font>
+                     <Font name="Oxanium Regular" size="43.0" />
+                  </font>
+               </Label>
+               <JFXTextArea fx:id="wordDefinition" focusColor="#405aa800" layoutX="159.0" layoutY="290.0" prefHeight="346.0" prefWidth="1227.0" styleClass="text_area" stylesheets="@CSS/CSSTEST.css" text="&#10;" unFocusColor="#4d4d4d02">
+                  <font>
+                     <Font name="Arial" size="35.0" />
+                  </font>
+                  <padding>
+                     <Insets left="10.0" top="10.0" />
+                  </padding>
+               </JFXTextArea>
+               <TextField fx:id="wordTarget" layoutX="160.0" layoutY="98.0" prefHeight="90.0" prefWidth="428.0" styleClass="text_area" stylesheets="@CSS/CSSTEST.css">
+                  <font>
+                     <Font name="Oxanium Regular" size="35.0" />
+                  </font>
+               </TextField>
+               <Label layoutX="162.0" layoutY="189.0" prefHeight="90.0" prefWidth="681.0" text="INPUT WORD DEFINITION" textFill="#9e1818">
+                  <font>
+                     <Font name="Oxanium Regular" size="43.0" />
+                  </font>
+               </Label>
+               <AnchorPane layoutX="1100.0" layoutY="140.0" prefHeight="131.0" prefWidth="219.0" styleClass="parent" stylesheets="@CSS/CSSTEST.css">
+                  <children>
+                     <Pane layoutX="-1.0" layoutY="34.0" prefHeight="57.0" prefWidth="240.0" styleClass="left-text-button__border" stylesheets="@CSS/CSSTEST.css" AnchorPane.bottomAnchor="13.0" AnchorPane.leftAnchor="-1.0" AnchorPane.topAnchor="34.0" />
+                     <Pane layoutY="35.0" prefHeight="55.0" prefWidth="243.0" styleClass="left-text-button__background" stylesheets="@CSS/CSSTEST.css" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="35.0" />
+                     <Pane layoutX="6.0" layoutY="34.0" prefHeight="84.0" prefWidth="284.0" styleClass="text-button__body" stylesheets="@CSS/CSSTEST.css" AnchorPane.bottomAnchor="13.0" AnchorPane.leftAnchor="6.0" AnchorPane.topAnchor="34.0" />
+                     <Button alignment="BASELINE_LEFT" layoutX="7.0" layoutY="19.0" mnemonicParsing="false" onAction="#saveWord" prefHeight="112.0" prefWidth="298.0" styleClass="text-button__text" stylesheets="@CSS/CSSTEST.css" text=" SAVE" textFill="#00e1ff">
+                        <font>
+                           <Font name="Oxanium Regular" size="46.0" />
+                        </font>
+                        <graphic>
+                           <FontIcon iconColor="#00e1ff" iconLiteral="far-save" />
+                        </graphic>
+                     </Button>
+                     <Text fill="#05dff7" layoutX="33.0" layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PROCEED TO EXECUTION IN PRIORITIZING PROGRAM" wrappingWidth="51.870033264160156">
+                        <font>
+                           <Font size="4.0" />
+                        </font>
+                     </Text>
+                  </children>
+               </AnchorPane>
+               <Pane layoutX="1322.0" layoutY="637.0" prefHeight="74.0" prefWidth="81.0">
+                  <children>
+                     <Label alignment="BASELINE_CENTER" layoutX="45.0" layoutY="-10.0" prefHeight="32.0" prefWidth="32.0" styleClass="image-button" stylesheets="@CSS/CSSTEST.css" text="ESC">
+                        <font>
+                           <Font size="10.0" />
+                        </font>
+                     </Label>
+                     <Label layoutX="84.0" layoutY="-10.0" prefHeight="34.0" prefWidth="24.0" text="Close" textFill="#cf0e0e">
+                        <font>
+                           <Font size="10.0" />
+                        </font>
+                     </Label>
+                  </children>
+               </Pane>
+            </children></AnchorPane>
+      </bottom></BorderPane>
 </Pane>

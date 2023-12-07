@@ -1,12 +1,15 @@
 package UI;
 
-import Manager.AppDataManager;
+import Manager.DataFlowManager;
+import Manager.SoundManager;
 import Manager.UIManager;
 import com.example.translatetest1.MyDictionary;
+import com.jfoenix.controls.JFXTextArea;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 
 import java.io.IOException;
@@ -17,7 +20,7 @@ public class WordDisplay implements UILayer {
     @FXML
     private Label wordTarget;
     @FXML
-    private TextField wordDefinition;
+    private JFXTextArea wordDefinition;
 
     @Override
     public void onInit() {
@@ -27,12 +30,6 @@ public class WordDisplay implements UILayer {
     @Override
     public void onClose() {
 
-    }
-
-    @FXML
-    private void switchToMainMenu(ActionEvent event) throws IOException {
-        UIManager.getIns(UIManager.class).openScene(currentPane, "HelloApplication.fxml");
-        wordDefinition.setEditable(false);
     }
 
     @FXML
@@ -49,21 +46,30 @@ public class WordDisplay implements UILayer {
     @FXML
     private void deleteWordFromDic(ActionEvent event) throws IOException {
         MyDictionary.getIns(MyDictionary.class).deleteWordInDic(wordTarget.getText());
-    }
-
-    @FXML
-    private void addSetWordToBookmarks(ActionEvent event) throws IOException {
-        //do it later.
+        UIManager.getIns(UIManager.class).openScene(currentPane, "MainMenu.fxml");
     }
 
     public void displaySearchedWord() {
-        wordTarget.setText(AppDataManager.getIns(AppDataManager.class).getCurrentEnViWordTarget());
-        wordDefinition.setText(formatString(AppDataManager.getIns(AppDataManager.class).getCurrentEnViWordDefinition()));
+        wordTarget.setText(DataFlowManager.getIns(DataFlowManager.class).getCurrentEnViWordTarget());
+        wordDefinition.setText(formatString(DataFlowManager.getIns(DataFlowManager.class).getCurrentEnViWordDefinition()));
+    }
+
+    @FXML
+    private void speakInputWord(ActionEvent event) {
+        SoundManager.getIns(SoundManager.class).speakWord(wordTarget.getText());
     }
 
     private String formatString(String s) {
         return s.replaceAll("<br />", "\n")
                 .replaceAll("</Q></I>", "")
                 .replaceAll("<I><Q>", "");
+    }
+
+    @FXML
+    private void backToMainMenu(KeyEvent event) throws IOException {
+        System.out.println("key press");
+        if (event.getCode() == KeyCode.ESCAPE) {
+            UIManager.getIns(UIManager.class).openScene(currentPane, "MainMenu.fxml");
+        }
     }
 }

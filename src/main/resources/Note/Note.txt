@@ -4,7 +4,7 @@
 ----------------- Design Pattern for project ------------------
 - use Singleton for Manager class.
 - use Factory to create Words (maybe).
-- use Change of Responsibility for use log in.
+- use Chain of Responsibility for use log in.
 ----------------------------- Q&A -----------------------------
 + Tại sao dùng Singleton mà không dùng static?
  -> Trả lời: - Singleton đảm bảo duy chỉ 1 đối tượng kế thừa từ Singleton được khởi tạo
@@ -15,3 +15,5 @@
                bị override, do vậy muốn đảm bảo tính mô-đun của chương trình, nên sử dụng
                Singleton (dẫu vậy vẫn không nên lạm dụng Singleton quá nhiều dẫn đến việc
                chương trình sẽ rất rắc rối)
++ Tại sao các Manager lại kết thừa lớp Singleton?
+ -> Trả lời: Các Manager ở đây được áp dụng Farcade Pattern.

@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<Pane fx:id="currentPane" focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#backToGames" prefHeight="865.0" prefWidth="1536.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.Games.MCQsGame">
+   <children>
+      <ImageView fitHeight="864.0" fitWidth="1536.0" pickOnBounds="true">
+         <image>
+            <Image url="@../../../../Images/BackGround.png" />
+         </image>
+      </ImageView>
+      <BorderPane prefHeight="864.0" prefWidth="1536.0">
+         <top>
+            <AnchorPane prefHeight="83.0" prefWidth="1536.0" BorderPane.alignment="CENTER">
+               <children>
+                  <AnchorPane layoutX="356.0" layoutY="-34.0" prefHeight="111.0" prefWidth="787.0">
+                     <children>
+                        <ImageView fitHeight="60.0" fitWidth="138.0" layoutX="87.0" layoutY="53.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="87.0" AnchorPane.rightAnchor="534.0" AnchorPane.topAnchor="53.0">
+                           <image>
+                              <Image url="@../../../../Images/completeATAST.png" />
+                           </image>
+                        </ImageView>
+                        <Text fill="#00bfff" layoutX="228.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MULTIPLE CHOICE" wrappingWidth="444.2830810546875" AnchorPane.leftAnchor="228.0" AnchorPane.rightAnchor="93.0" AnchorPane.topAnchor="54.0">
+                           <font>
+                              <Font name="Oxanium Regular" size="51.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </AnchorPane>
+                  <ImageView fitHeight="46.0" fitWidth="151.0" layoutX="34.0" layoutY="77.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../Images/PROTOCO6520.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+         </top>
+         <bottom>
+            <AnchorPane prefHeight="699.0" prefWidth="1536.0" BorderPane.alignment="CENTER">
+               <children>
+                  <JFXTextArea fx:id="questionTextArea" editable="false" focusColor="#405aa800" layoutX="73.0" layoutY="-16.0" prefHeight="149.0" prefWidth="1422.0" styleClass="question__text" stylesheets="@../CSS/CSSTEST.css" text="Question" unFocusColor="#9c191900">
+                     <font>
+                        <Font name="Oxanium Regular" size="38.0" />
+                     </font>
+                  </JFXTextArea>
+                  <AnchorPane prefHeight="648.0" prefWidth="775.0">
+                     <children>
+                        <Pane layoutX="789.0" layoutY="123.0" prefHeight="346.0" prefWidth="652.0">
+                           <children>
+                              <Label fx:id="feedbackLabel" alignment="BASELINE_CENTER" layoutY="-69.0" prefHeight="241.0" prefWidth="604.0" text="FeedBack">
+                                 <font>
+                                    <Font name="Oxanium Regular" size="85.0" />
+                                 </font>
+                              </Label>
+                              <JFXTextArea fx:id="answerDisplay" focusColor="#405aa800" layoutX="-1.0" layoutY="155.0" prefHeight="218.0" prefWidth="603.0" styleClass="answer__text" stylesheets="@../CSS/CSSTEST.css" text="The answer is: " unFocusColor="#4d4d4d00">
+                                 <font>
+                                    <Font name="Oxanium Regular" size="29.0" />
+                                 </font>
+                              </JFXTextArea>
+                           </children>
+                        </Pane>
+                        <Pane layoutY="108.0" prefHeight="503.0" prefWidth="750.0">
+                           <children>
+                              <Pane layoutX="73.0" layoutY="9.0" prefHeight="78.0" prefWidth="632.0" styleClass="radio-button__background" stylesheets="@../CSS/CSSTEST.css">
+                                 <children>
+                                    <RadioButton fx:id="answer1" layoutX="15.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="616.0" stylesheets="@../CSS/CSSTEST.css" text="RadioButton" textFill="#05dff7">
+                                       <font>
+                                          <Font name="Oxanium Regular" size="28.0" />
+                                       </font>
+                                    </RadioButton>
+                                 </children>
+                              </Pane>
+                              <Pane layoutX="73.0" layoutY="103.0" prefHeight="78.0" prefWidth="632.0" styleClass="radio-button__background" stylesheets="@../CSS/CSSTEST.css">
+                                 <children>
+                                    <RadioButton fx:id="answer2" layoutX="15.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="616.0" stylesheets="@../CSS/CSSTEST.css" text="RadioButton" textFill="#05dff7">
+                                       <font>
+                                          <Font name="Oxanium Regular" size="28.0" />
+                                       </font>
+                                    </RadioButton>
+                                 </children>
+                              </Pane>
+                              <Pane layoutX="73.0" layoutY="196.0" prefHeight="78.0" prefWidth="632.0" styleClass="radio-button__background" stylesheets="@../CSS/CSSTEST.css">
+                                 <children>
+                                    <RadioButton fx:id="answer3" layoutX="15.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="616.0" stylesheets="@../CSS/CSSTEST.css" text="RadioButton" textFill="#05dff7">
+                                       <font>
+                                          <Font name="Oxanium Regular" size="28.0" />
+                                       </font>
+                                    </RadioButton>
+                                 </children>
+                              </Pane>
+                              <Pane layoutX="73.0" layoutY="284.0" prefHeight="78.0" prefWidth="632.0" styleClass="radio-button__background" stylesheets="@../CSS/CSSTEST.css">
+                                 <children>
+                                    <RadioButton fx:id="answer4" layoutX="13.0" layoutY="4.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="617.0" stylesheets="@../CSS/CSSTEST.css" text="RadioButton" textFill="#05dff7">
+                                       <font>
+                                          <Font name="Oxanium Regular" size="28.0" />
+                                       </font>
+                                    </RadioButton>
+                                 </children>
+                              </Pane>
+                           </children>
+                        </Pane>
+                        <AnchorPane layoutX="92.0" layoutY="469.0" prefHeight="131.0" prefWidth="710.0" styleClass="parent" stylesheets="@../CSS/CSSTEST.css">
+                           <children>
+                              <Pane layoutX="-1.0" layoutY="34.0" prefHeight="57.0" prefWidth="240.0" styleClass="left-text-button__border" stylesheets="@../CSS/CSSTEST.css" AnchorPane.bottomAnchor="13.0" AnchorPane.leftAnchor="-1.0" AnchorPane.topAnchor="34.0" />
+                              <Pane layoutY="35.0" prefHeight="55.0" prefWidth="243.0" styleClass="left-text-button__background" stylesheets="@../CSS/CSSTEST.css" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="35.0" />
+                              <Pane layoutX="6.0" layoutY="34.0" prefHeight="84.0" prefWidth="492.0" styleClass="text-button__body" stylesheets="@../CSS/CSSTEST.css" AnchorPane.bottomAnchor="13.0" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="212.0" AnchorPane.topAnchor="34.0" />
+                              <Button alignment="BASELINE_LEFT" layoutX="7.0" layoutY="33.0" mnemonicParsing="false" onAction="#handleAnswerSelection" prefHeight="84.0" prefWidth="485.0" styleClass="text-button__text" stylesheets="@../CSS/CSSTEST.css" text=" CHECK ANSWER" textFill="#00e1ff">
+                                 <font>
+                                    <Font name="Oxanium Regular" size="46.0" />
+                                 </font>
+                                 <graphic>
+                                    <FontIcon iconColor="#00e1ff" iconLiteral="far-check-square" />
+                                 </graphic>
+                              </Button>
+                              <Text fill="#05dff7" layoutX="34.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PROCEED TO EXECUTION IN PRIORITIZING PROGRAM" wrappingWidth="51.870033264160156">
+                                 <font>
+                                    <Font size="4.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane layoutX="972.0" layoutY="476.0" prefHeight="131.0" prefWidth="547.0" styleClass="parent" stylesheets="@../CSS/CSSTEST.css">
+                           <children>
+                              <Pane layoutX="-1.0" layoutY="34.0" prefHeight="57.0" prefWidth="240.0" styleClass="left-text-button__border" stylesheets="@../CSS/CSSTEST.css" AnchorPane.bottomAnchor="13.0" AnchorPane.leftAnchor="-1.0" AnchorPane.topAnchor="34.0" />
+                              <Pane layoutY="35.0" prefHeight="55.0" prefWidth="243.0" styleClass="left-text-button__background" stylesheets="@../CSS/CSSTEST.css" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="35.0" />
+                              <Pane layoutX="6.0" layoutY="34.0" prefHeight="84.0" prefWidth="474.0" styleClass="text-button__body" stylesheets="@../CSS/CSSTEST.css" AnchorPane.bottomAnchor="13.0" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="34.0" />
+                              <Button alignment="BASELINE_LEFT" layoutX="7.0" layoutY="19.0" mnemonicParsing="false" onAction="#loadNextQuestion" prefHeight="112.0" prefWidth="486.0" styleClass="text-button__text" stylesheets="@../CSS/CSSTEST.css" text=" NEXT QUESTION" textFill="#00e1ff">
+                                 <font>
+                                    <Font name="Oxanium Regular" size="46.0" />
+                                 </font>
+                                 <graphic>
+                                    <FontIcon iconColor="#00e1ff" iconLiteral="fas-angle-double-right" />
+                                 </graphic>
+                              </Button>
+                              <Text fill="#05dff7" layoutX="33.0" layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PROCEED TO EXECUTION IN PRIORITIZING PROGRAM" wrappingWidth="51.870033264160156">
+                                 <font>
+                                    <Font size="4.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+                  <Pane layoutX="1401.0" layoutY="599.0" prefHeight="74.0" prefWidth="111.0">
+                     <children>
+                        <Label alignment="BASELINE_CENTER" layoutX="45.0" layoutY="-10.0" prefHeight="32.0" prefWidth="32.0" styleClass="image-button" stylesheets="@../CSS/CSSTEST.css" text="ESC">
+                           <font>
+                              <Font size="10.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="84.0" layoutY="-10.0" prefHeight="34.0" prefWidth="24.0" text="Close" textFill="#cf0e0e">
+                           <font>
+                              <Font size="10.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+               </children>
+            </AnchorPane>
+         </bottom>
+      </BorderPane>
+   </children>
+</Pane>

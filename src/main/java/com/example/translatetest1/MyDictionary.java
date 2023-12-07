@@ -1,7 +1,6 @@
 package com.example.translatetest1;
 
 import AlertDisplay.*;
-import Manager.AppDataManager;
 import Manager.DataBaseManager;
 import Singleton.Singleton;
 
@@ -44,8 +43,8 @@ public class MyDictionary extends Singleton<MyDictionary> implements CustomDicti
 
     @Override
     public void deleteWordInDic(String word) {
-        enToViDic.remove(word);
         DataBaseManager.getIns(DataBaseManager.class).deleteWordSQL(word);
+        enToViDic.remove(word);
 
         setCustomAlert(new DeleteWordSuccessAlert());
         customAlert.displayAlert(word);
@@ -64,9 +63,12 @@ public class MyDictionary extends Singleton<MyDictionary> implements CustomDicti
 
     @Override
     public void changeWordDefinition(String target, String definition) {
+        DataBaseManager.getIns(DataBaseManager.class).deleteWordSQL(target);
+        DataBaseManager.getIns(DataBaseManager.class).addWordtoSQL(target, definition);
         enToViDic.remove(target);
-        AppDataManager.getIns(AppDataManager.class).setCurrentEnViWordByTargetAndDefinition(target, definition);
-        enToViDic.put(target, AppDataManager.getIns(AppDataManager.class).getCurrentEnViWord());
+
+        setCustomAlert(new ChangeWordDefinitionSuccessAlert());
+        customAlert.displayAlert(target);
 
     }
 

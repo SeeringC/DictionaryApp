@@ -1,25 +1,101 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<Pane fx:id="currentPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.Game">
+<Pane fx:id="currentPane" focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#backToMainMenu" prefHeight="865.0" prefWidth="1536.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.Game">
    <children>
-      <AnchorPane prefHeight="400.0" prefWidth="600.0">
-         <children>
-            <JFXButton layoutX="45.0" layoutY="93.0" onAction="#switchToMainMenu" text="Main Menu">
-               <font>
-                  <Font size="31.0" />
-               </font>
-            </JFXButton>
-            <JFXButton layoutX="384.0" layoutY="97.0" onAction="#switchToWordleGame" text="WordleGame">
-               <font>
-                  <Font size="28.0" />
-               </font>
-            </JFXButton>
-         </children>
-      </AnchorPane>
+      <ImageView fitHeight="864.0" fitWidth="1536.0" pickOnBounds="true">
+         <image>
+            <Image url="@../../../Images/BackGround.png" />
+         </image>
+      </ImageView>
+      <BorderPane focusTraversable="true" onKeyPressed="#backToMainMenu" prefHeight="864.0" prefWidth="1536.0">
+         <top>
+            <AnchorPane prefHeight="136.0" prefWidth="1536.0" BorderPane.alignment="CENTER">
+               <children>
+                  <AnchorPane layoutX="407.0" layoutY="-34.0" prefHeight="0.0" prefWidth="289.0">
+                     <children>
+                        <ImageView fitHeight="60.0" fitWidth="138.0" layoutX="87.0" layoutY="53.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="89.0" AnchorPane.leftAnchor="87.0" AnchorPane.rightAnchor="534.0" AnchorPane.topAnchor="53.0">
+                           <image>
+                              <Image url="@../../../Images/completeATAST.png" />
+                           </image>
+                        </ImageView>
+                        <Text fill="#00bfff" layoutX="228.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SELECT GAME" wrappingWidth="499.483154296875" AnchorPane.bottomAnchor="86.0" AnchorPane.leftAnchor="228.0" AnchorPane.rightAnchor="65.0" AnchorPane.topAnchor="49.0">
+                           <font>
+                              <Font name="Oxanium Regular" size="51.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </AnchorPane>
+                  <ImageView fitHeight="46.0" fitWidth="151.0" layoutX="34.0" layoutY="77.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../Images/PROTOCO6520.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+         </top>
+         <bottom>
+            <AnchorPane prefHeight="688.0" prefWidth="1536.0" BorderPane.alignment="CENTER">
+               <children>
+                  <AnchorPane fx:id="fileTranslatorDescription1" layoutX="874.0" layoutY="39.0" prefHeight="466.0" prefWidth="326.0">
+                     <children>
+                        <Pane prefHeight="522.0" prefWidth="506.0">
+                           <children>
+                              <Text fill="#f2190a" layoutY="-12.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Multiple Choice Game" wrappingWidth="471.20001220703125">
+                                 <font>
+                                    <Font name="Oxanium Regular" size="39.0" />
+                                 </font>
+                              </Text>
+                              <Pane fx:id="multipleChoiceGameDescription" prefHeight="530.0" prefWidth="505.0" styleClass="main-menu-button__image" stylesheets="@CSS/CSSTEST.css" />
+                              <ImageView fx:id="multipleChoiceGameImage" fitHeight="526.0" fitWidth="474.0" layoutX="10.0" layoutY="2.0" onMouseClicked="#switchToMCQsGame" pickOnBounds="true">
+                                 <image>
+                                    <Image url="@../../../Images/FileTranslator%20Image.jpg" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </Pane>
+                        <Pane layoutX="-700.0" prefHeight="522.0" prefWidth="506.0">
+                           <children>
+                              <Text fill="#f2190a" layoutY="-12.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Wordle Game" wrappingWidth="471.20001220703125">
+                                 <font>
+                                    <Font name="Oxanium Regular" size="39.0" />
+                                 </font>
+                              </Text>
+                              <Pane fx:id="wordleGameDescription" prefHeight="530.0" prefWidth="505.0" styleClass="main-menu-button__image" stylesheets="@CSS/CSSTEST.css" />
+                              <ImageView fx:id="wordleGameImage" fitHeight="526.0" fitWidth="474.0" layoutX="10.0" layoutY="2.0" onMouseClicked="#switchToWordleGame" pickOnBounds="true">
+                                 <image>
+                                    <Image url="@../../../Images/FileTranslator%20Image.jpg" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </Pane>
+                     </children>
+                  </AnchorPane>
+                  <Pane layoutX="1322.0" layoutY="577.0" prefHeight="74.0" prefWidth="167.0">
+                     <children>
+                        <Label alignment="BASELINE_CENTER" layoutX="11.0" layoutY="12.0" prefHeight="58.0" prefWidth="61.0" styleClass="image-button" stylesheets="@CSS/CSSTEST.css" text="ESC">
+                           <font>
+                              <Font size="27.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="84.0" layoutY="15.0" text="Back" textFill="#cf0e0e">
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+               </children>
+            </AnchorPane>
+         </bottom>
+      </BorderPane>
    </children>
 </Pane>

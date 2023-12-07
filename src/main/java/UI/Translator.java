@@ -1,13 +1,13 @@
 package UI;
 
 
-import Manager.UIManager;
 import Manager.SoundManager;
+import Manager.UIManager;
+import com.jfoenix.controls.JFXTextArea;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 
@@ -23,13 +23,13 @@ public class Translator implements UILayer {
     @FXML
     private Pane currentPane;
     @FXML
-    private Label first ;
+    private Label langFrom;
     @FXML
-    private Label second;
+    private Label langTo;
     @FXML
-    private TextField inputWord;
+    private JFXTextArea inputWord;
     @FXML
-    private TextArea outputWord;
+    private JFXTextArea outputWord;
 
     @Override
     public void onInit() {
@@ -42,14 +42,9 @@ public class Translator implements UILayer {
     }
 
     @FXML
-    public void switchToHelloApplication(ActionEvent event) throws IOException {
-        UIManager.getIns(UIManager.class).openScene(currentPane, "HelloApplication.fxml");
-    }
-
-    @FXML
     private void switchLanguage(ActionEvent event) {
-        swapLabels(first, second);
-        swapTextFields(inputWord, outputWord);
+        swapLabels(langFrom, langTo);
+        swapTextAreas(inputWord, outputWord);
     }
 
     private void swapLabels(Label first, Label second) {
@@ -58,16 +53,16 @@ public class Translator implements UILayer {
         second.setText(temp);
     }
 
-    private void swapTextFields(TextField inputWord, TextArea outputWord) {
+    private void swapTextAreas(JFXTextArea inputWord, JFXTextArea outputWord) {
         String temp = inputWord.getText();
         inputWord.setText(outputWord.getText());
         outputWord.setText(temp);
     }
 
     @FXML
-    private void translateWord(KeyEvent event) throws IOException {
-        String fromLanguage = first.getText();
-        String toLanguage = second.getText();
+    private void translateWord(ActionEvent event) throws IOException {
+        String fromLanguage = getLanguageCode(langFrom);
+        String toLanguage = getLanguageCode(langTo);
         String word = inputWord.getText();
         String translatedWord = translate(fromLanguage, toLanguage, word);
         outputWord.setText(translatedWord);
@@ -78,8 +73,13 @@ public class Translator implements UILayer {
     }
 
     @FXML
-    private void speakWord(ActionEvent event) {
+    private void speakInputWord(ActionEvent event) {
         SoundManager.getIns(SoundManager.class).speakWord(inputWord.getText());
+    }
+
+    @FXML
+    private void speakOutputWord(ActionEvent event) {
+        SoundManager.getIns(SoundManager.class).speakWord(outputWord.getText());
     }
 
     private String translate(String langFrom, String langTo, String text) throws IOException {
@@ -105,6 +105,13 @@ public class Translator implements UILayer {
         }
         in.close();
         return response.toString();
+    }
+
+    @FXML
+    private void backToMainMenu(KeyEvent event) throws IOException {
+        if (event.getCode() == KeyCode.ESCAPE) {
+            UIManager.getIns(UIManager.class).openScene(currentPane, "MainMenu.fxml");
+        }
     }
 }
 

@@ -28,4 +28,6 @@ module com.example.translatetest1 {
     exports UI.Games;
     opens UI.Games to javafx.fxml;
     exports AlertDisplay;
+    exports UI.Games.MCQsGameData;
+    opens UI.Games.MCQsGameData to javafx.fxml;
 }

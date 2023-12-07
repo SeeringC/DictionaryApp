@@ -10,6 +10,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 
@@ -80,6 +81,7 @@ public class WordleGame implements UILayer {
 
     private TextField createTextField() {
         TextField textField = new TextField();
+        setStyleToTextField(textField);
         textField.textProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue.length() > 1) {
                 textField.setText(newValue.substring(0, 1));
@@ -88,6 +90,17 @@ public class WordleGame implements UILayer {
         return textField;
     }
 
+    private void setStyleToTextField(TextField textField) {
+         textField.setStyle("    -fx-background-color: #1f0606;\n" +
+                            "   -fx-border-color: #05dff7;\n" +
+                            "    -fx-border-width: 1;\n" +
+                            "    -fx-text-fill: #05dff7;\n" +
+                            "    -fx-pref-width: 167;\n" +
+                            "    -fx-pref-height: 108;" +
+                            "    -fx-alignment: center;" +
+                            "    -fx-font-size: 33;" +
+                            "    -fx-font-family: Oxanium;");
+    }
     public void moveToNextTextField() {
         for (int row = 0; row < GUESS_TURN; row++) {
             for (int col = 0; col < WORD_LENGTH; col++) {
@@ -145,17 +158,53 @@ public class WordleGame implements UILayer {
         String guess = textFieldsArr[row][col].getText();
         String answer = answerWord.get(col);
         if (Objects.equals(guess, answer)) {
-            textFieldsArr[row][col].setStyle("-fx-background-color: green;");
+            setStyleToCorrectTextField(textFieldsArr[row][col]);
             tempAnswerWord.remove(guess);
             return 1;
         } else if (answerWord.contains(guess)) {
-            textFieldsArr[row][col].setStyle("-fx-background-color: yellow;");
+            setStyleToPartlyCorrectTextField(textFieldsArr[row][col]);
             tempAnswerWord.remove(guess);
         } else {
-            textFieldsArr[row][col].setStyle("-fx-background-color: grey;");
+            setStyleToIncorrectTextField(textFieldsArr[row][col]);
             tempAnswerWord.remove(guess);
         }
         return 0;
+    }
+
+    private void setStyleToCorrectTextField(TextField textField) {
+        textField.setStyle("    -fx-background-color: #0e5e09;\n" +
+                "   -fx-border-color: #05dff7;\n" +
+                "    -fx-border-width: 1;\n" +
+                "    -fx-text-fill: #05dff7;\n" +
+                "    -fx-pref-width: 167;\n" +
+                "    -fx-pref-height: 108;" +
+                "    -fx-alignment: center;" +
+                "    -fx-font-size: 33;" +
+                "    -fx-font-family: Oxanium;");
+    }
+
+    private void setStyleToPartlyCorrectTextField(TextField textField) {
+        textField.setStyle("    -fx-background-color: #a5a80c;\n" +
+                "   -fx-border-color: #05dff7;\n" +
+                "    -fx-border-width: 1;\n" +
+                "    -fx-text-fill: #05dff7;\n" +
+                "    -fx-pref-width: 167;\n" +
+                "    -fx-pref-height: 108;" +
+                "    -fx-alignment: center;" +
+                "    -fx-font-size: 33;" +
+                "    -fx-font-family: Oxanium;");
+    }
+
+    private void setStyleToIncorrectTextField(TextField textField) {
+        textField.setStyle("    -fx-background-color: #870909;\n" +
+                "   -fx-border-color: #05dff7;\n" +
+                "    -fx-border-width: 1;\n" +
+                "    -fx-text-fill: #05dff7;\n" +
+                "    -fx-pref-width: 167;\n" +
+                "    -fx-pref-height: 108;" +
+                "    -fx-alignment: center;" +
+                "    -fx-font-size: 33;" +
+                "    -fx-font-family: Oxanium;");
     }
 
     public void setCustomAlert(CustomAlert customAlert) {
@@ -173,6 +222,20 @@ public class WordleGame implements UILayer {
 
     private String getAnswerString() {
         return answerWord.stream().collect(Collectors.joining());
+    }
+
+    @FXML
+    private void replayGame(ActionEvent event) {
+        assignRandomWordToAnswerWord();
+        loadGame();
+    }
+
+    @FXML
+    private void backToGames (KeyEvent event) throws IOException {
+        System.out.println("key press");
+        if (event.getCode() == KeyCode.ESCAPE) {
+            UIManager.getIns(UIManager.class).openScene(currentPane, "UI.Game.fxml");
+        }
     }
 }
 

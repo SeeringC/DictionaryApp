@@ -107,6 +107,7 @@ public class DataBaseManager extends Singleton<DataBaseManager> {
     public void deleteWordSQL(String target) {
         final String SQL_QUERY = "DELETE FROM dictionary WHERE target = ?";
         try {
+            connectToDatabase();
             PreparedStatement ps = connection.prepareStatement(SQL_QUERY);
             ps.setString(1, target);
             try {

@@ -106,7 +106,7 @@
                         <!-- Default configuration for running with: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>com.example.translatetest1/com.example.translatetest1.Main
+                            <mainClass>com.example.translatetest1/com.example.translatetest1.DictionaryApplication
                             </mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>

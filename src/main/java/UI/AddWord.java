@@ -2,10 +2,12 @@ package UI;
 
 import Manager.UIManager;
 import com.example.translatetest1.MyDictionary;
+import com.jfoenix.controls.JFXTextArea;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 
 import java.io.IOException;
@@ -15,11 +17,9 @@ public class AddWord implements UILayer {
     @FXML
     private Pane currentPane;
     @FXML
-    private Button bt1;
+    private TextField wordTarget;
     @FXML
-    private TextField addbox1;
-    @FXML
-    private TextField addbox2;
+    private JFXTextArea wordDefinition;
 
     @Override
     public void onInit() {
@@ -30,15 +30,18 @@ public class AddWord implements UILayer {
     public void onClose() {
 
     }
+
+    public void saveWord(ActionEvent event) throws SQLException {
+        MyDictionary.getIns(MyDictionary.class).addWordToDic(wordTarget.getText(), wordDefinition.getText());
+    }
+
     @FXML
-    public void switchToHelloApplication(ActionEvent event) throws IOException {
-        UIManager.getIns(UIManager.class).openScene(currentPane, "HelloApplication.fxml");
+    private void backToMainMenu(KeyEvent event) throws IOException {
+        System.out.println("key press");
+        if (event.getCode() == KeyCode.ESCAPE) {
+            UIManager.getIns(UIManager.class).openScene(currentPane, "MainMenu.fxml");
+        }
     }
-
-    public void Success(ActionEvent event) throws SQLException {
-        MyDictionary.getIns(MyDictionary.class).addWordToDic(addbox1.getText(), addbox2.getText());
-    }
-
 
 }
 

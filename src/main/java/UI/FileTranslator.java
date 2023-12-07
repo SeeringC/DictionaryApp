@@ -38,7 +38,6 @@ public class FileTranslator implements UILayer {
 
     @Override
     public void onInit() {
-
         limitFileTypes();
     }
 
@@ -74,11 +73,6 @@ public class FileTranslator implements UILayer {
     }
 
     @FXML
-    public void switchToHelloApplication(ActionEvent event) throws IOException {
-        UIManager.getIns(UIManager.class).openScene(currentPane, "HelloApplication.fxml");
-    }
-
-    @FXML
     private void switchLanguage(ActionEvent event) {
         swapLabels(langFrom, langTo);
     }
@@ -91,8 +85,8 @@ public class FileTranslator implements UILayer {
 
     @FXML
     private void translateFileContent(ActionEvent event) throws IOException {
-        String fromLanguage = langFrom.getText();
-        String toLanguage = langTo.getText();
+        String fromLanguage = getLanguageCode(langFrom);
+        String toLanguage = getLanguageCode(langTo);
 
         String translatedFileContent = translate(fromLanguage, toLanguage, browsedFileContent);
         translatedContent.setText(translatedFileContent);
@@ -149,7 +143,7 @@ public class FileTranslator implements UILayer {
     @FXML
     private void backToMainMenu(KeyEvent event) throws IOException {
         if (event.getCode() == KeyCode.ESCAPE) {
-            UIManager.getIns(UIManager.class).openScene(currentPane, "HelloApplication.fxml");
+            UIManager.getIns(UIManager.class).openScene(currentPane, "MainMenu.fxml");
         }
     }
 }

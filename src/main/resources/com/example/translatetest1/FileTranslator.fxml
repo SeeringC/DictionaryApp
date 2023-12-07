@@ -2,6 +2,8 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTextArea?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -19,43 +21,48 @@
             <Image url="@../../../Images/BackGround.png" />
          </image>
       </ImageView>
-      <BorderPane layoutX="6.0" layoutY="-6.0" prefHeight="864.0" prefWidth="1536.0">
+      <BorderPane layoutY="1.0" prefHeight="864.0" prefWidth="1428.0">
          <bottom>
             <AnchorPane prefHeight="503.0" prefWidth="1536.0" BorderPane.alignment="CENTER">
                <children>
                   <AnchorPane layoutX="62.0" layoutY="111.0" prefHeight="306.0" prefWidth="561.0">
                      <children>
-                        <JFXTextArea fx:id="contentToTranslate" layoutX="15.0" layoutY="-4.0" prefHeight="267.0" prefWidth="611.0" styleClass="text_area" stylesheets="@CSS/CSSTEST.css" text="Hi, my name is Nguyen&#10;&#10;&#10;" AnchorPane.bottomAnchor="43.19999999999999" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="8.0">
+                        <JFXTextArea fx:id="contentToTranslate" editable="false" focusColor="#405aa800" layoutX="17.0" layoutY="-4.0" prefHeight="267.0" prefWidth="537.0" styleClass="text_area" stylesheets="@CSS/CSSTEST.css" text="&#10;&#10;" unFocusColor="#4d4d4d00" AnchorPane.bottomAnchor="43.0" AnchorPane.leftAnchor="17.0" AnchorPane.rightAnchor="8.0">
                            <font>
-                              <Font name="Oxanium Regular" size="22.0" />
+                              <Font name="Arial" size="22.0" />
                            </font>
+                           <opaqueInsets>
+                              <Insets left="10.0" top="10.0" />
+                           </opaqueInsets>
                         </JFXTextArea>
                         <Pane prefHeight="267.0" prefWidth="14.0" styleClass="left-text-area" stylesheets="@CSS/CSSTEST.css" />
                      </children>
                   </AnchorPane>
                   <AnchorPane layoutX="935.0" layoutY="103.0" prefHeight="306.0" prefWidth="555.0">
                      <children>
-                        <JFXTextArea fx:id="translatedContent" prefHeight="267.0" prefWidth="611.0" styleClass="text_area" stylesheets="@CSS/CSSTEST.css" text="Hi, my name is Nguyen&#10;&#10;&#10;" AnchorPane.bottomAnchor="37.0" AnchorPane.leftAnchor="18.0" AnchorPane.rightAnchor="5.0">
+                        <JFXTextArea fx:id="translatedContent" editable="false" focusColor="#405aa800" layoutX="18.0" prefHeight="267.0" prefWidth="532.0" styleClass="text_area" stylesheets="@CSS/CSSTEST.css" text="&#10;&#10;" unFocusColor="#4d4d4d00" AnchorPane.bottomAnchor="37.0" AnchorPane.leftAnchor="18.0" AnchorPane.rightAnchor="5.0">
                            <font>
-                              <Font name="Oxanium Regular" size="22.0" />
+                              <Font name="Arial" size="22.0" />
                            </font>
+                           <opaqueInsets>
+                              <Insets left="10.0" top="10.0" />
+                           </opaqueInsets>
                         </JFXTextArea>
                         <Pane layoutY="3.0" prefHeight="266.0" prefWidth="16.0" styleClass="left-text-area" stylesheets="@CSS/CSSTEST.css" />
                      </children>
                   </AnchorPane>
-                  <AnchorPane layoutX="664.0" layoutY="155.0" prefHeight="104.0" prefWidth="309.0" styleClass="parent" stylesheets="@CSS/CSSTEST.css">
+                  <AnchorPane layoutX="642.0" layoutY="155.0" prefHeight="104.0" prefWidth="310.0" styleClass="parent" stylesheets="@CSS/CSSTEST.css">
                      <children>
                         <Pane layoutX="-1.0" layoutY="34.0" prefHeight="57.0" prefWidth="240.0" styleClass="left-text-button__border" stylesheets="@CSS/CSSTEST.css" AnchorPane.bottomAnchor="13.0" AnchorPane.leftAnchor="-1.0" AnchorPane.topAnchor="34.0" />
                         <Pane layoutY="35.0" prefHeight="55.0" prefWidth="243.0" styleClass="left-text-button__background" stylesheets="@CSS/CSSTEST.css" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="35.0" />
-                        <Pane layoutX="6.0" layoutY="34.0" prefHeight="54.0" prefWidth="205.0" styleClass="text-button__body" stylesheets="@CSS/CSSTEST.css" AnchorPane.bottomAnchor="13.0" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="99.0" AnchorPane.topAnchor="34.0" />
-                        <JFXButton alignment="BASELINE_LEFT" layoutX="7.0" layoutY="31.0" onAction="#translateFileContent" prefHeight="64.0" prefWidth="240.0" styleClass="text-button__text" stylesheets="@CSS/CSSTEST.css" text="Translate File" textFill="#00e1ff">
+                        <Pane layoutX="6.0" layoutY="34.0" prefHeight="57.0" prefWidth="255.0" styleClass="text-button__body" stylesheets="@CSS/CSSTEST.css" AnchorPane.bottomAnchor="13.0" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="49.0" AnchorPane.topAnchor="34.0" />
+                        <Button layoutX="7.0" layoutY="31.0" mnemonicParsing="false" onAction="#translateFileContent" prefHeight="64.0" prefWidth="255.0" styleClass="text-button__text" stylesheets="@CSS/CSSTEST.css" text="TRANSLATE FILE" textFill="#00e1ff">
                            <graphic>
                               <FontIcon iconColor="#00e1ff" iconLiteral="fab-perbyte" />
                            </graphic>
                            <font>
-                              <Font size="25.0" />
-                           </font>
-                        </JFXButton>
+                              <Font name="Oxanium Regular" size="25.0" />
+                           </font></Button>
                         <Text fill="#05dff7" layoutX="24.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PROCEED TO EXECUTION IN PRIORITIZING PROGRAM" wrappingWidth="25.470008850097656">
                            <font>
                               <Font size="2.0" />
@@ -90,7 +97,7 @@
                         <Font name="Oxanium Regular" size="43.0" />
                      </font>
                   </Label>
-                  <Label fx:id="langTo" alignment="BASELINE_CENTER" layoutX="952.0" layoutY="22.0" prefHeight="66.0" prefWidth="139.0" styleClass="label--language" stylesheets="@CSS/CSSTEST.css" text="Vi" textAlignment="CENTER">
+                  <Label fx:id="langTo" alignment="BASELINE_CENTER" layoutX="952.0" layoutY="21.0" prefHeight="66.0" prefWidth="139.0" styleClass="label--language" stylesheets="@CSS/CSSTEST.css" text="Vi" textAlignment="CENTER">
                      <font>
                         <Font size="43.0" />
                      </font>
@@ -99,7 +106,7 @@
             </AnchorPane>
          </bottom>
          <top>
-            <AnchorPane prefHeight="0.0" prefWidth="1536.0" BorderPane.alignment="CENTER">
+            <AnchorPane prefHeight="318.0" prefWidth="1041.0" BorderPane.alignment="CENTER">
                <children>
                   <AnchorPane layoutX="407.0" layoutY="-34.0" prefHeight="0.0" prefWidth="289.0">
                      <children>
@@ -108,7 +115,7 @@
                               <Image url="@../../../Images/completeATAST.png" />
                            </image>
                         </ImageView>
-                        <Text fill="#00bfff" layoutX="228.0" layoutY="99.0" strokeType="OUTSIDE" strokeWidth="0.0" text="File Translator" wrappingWidth="407.483154296875" AnchorPane.bottomAnchor="107.09000091552736" AnchorPane.leftAnchor="228.0" AnchorPane.rightAnchor="123.71684570312505" AnchorPane.topAnchor="58.709999084472656">
+                        <Text fill="#00bfff" layoutX="228.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="FILE TRANSLATOR" wrappingWidth="444.2830810546875" AnchorPane.bottomAnchor="17.0" AnchorPane.leftAnchor="228.0" AnchorPane.rightAnchor="93.0" AnchorPane.topAnchor="59.0">
                            <font>
                               <Font name="Oxanium Regular" size="51.0" />
                            </font>
@@ -124,16 +131,16 @@
                      <children>
                         <Pane layoutX="-1.0" layoutY="34.0" prefHeight="57.0" prefWidth="240.0" styleClass="left-text-button__border" stylesheets="@CSS/CSSTEST.css" AnchorPane.bottomAnchor="13.0" AnchorPane.leftAnchor="-1.0" AnchorPane.topAnchor="34.0" />
                         <Pane layoutY="35.0" prefHeight="55.0" prefWidth="243.0" styleClass="left-text-button__background" stylesheets="@CSS/CSSTEST.css" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="35.0" />
-                        <Pane layoutX="6.0" layoutY="34.0" prefHeight="54.0" prefWidth="205.0" styleClass="text-button__body" stylesheets="@CSS/CSSTEST.css" AnchorPane.bottomAnchor="13.0" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="99.0" AnchorPane.topAnchor="34.0" />
-                        <JFXButton alignment="BASELINE_LEFT" layoutX="7.0" layoutY="19.0" onAction="#browseFile" prefHeight="112.0" prefWidth="452.0" styleClass="text-button__text" stylesheets="@CSS/CSSTEST.css" text="  Browse" textFill="#00e1ff">
+                        <Pane layoutX="6.0" layoutY="34.0" prefHeight="85.0" prefWidth="301.0" styleClass="text-button__body" stylesheets="@CSS/CSSTEST.css" AnchorPane.bottomAnchor="13.0" AnchorPane.leftAnchor="6.0" AnchorPane.topAnchor="34.0" />
+                        <Button layoutX="-5.0" layoutY="20.0" mnemonicParsing="false" onAction="#browseFile" prefHeight="112.0" prefWidth="319.0" styleClass="text-button__text" stylesheets="@CSS/CSSTEST.css" text=" BROWSE" textFill="#00e1ff">
                            <graphic>
                               <FontIcon iconColor="#00e1ff" iconLiteral="fas-file-import" />
                            </graphic>
                            <font>
-                              <Font size="46.0" />
+                              <Font name="Oxanium Regular" size="46.0" />
                            </font>
-                        </JFXButton>
-                        <Text fill="#05dff7" layoutX="42.0" layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PROCEED TO EXECUTION IN PRIORITIZING PROGRAM" wrappingWidth="51.870033264160156">
+                        </Button>
+                        <Text fill="#05dff7" layoutX="37.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PROCEED TO EXECUTION IN PRIORITIZING PROGRAM" wrappingWidth="51.870033264160156">
                            <font>
                               <Font size="4.0" />
                            </font>
@@ -145,9 +152,9 @@
                         <Pane layoutX="-1.0" layoutY="34.0" prefHeight="57.0" prefWidth="240.0" styleClass="left-text-button__border" stylesheets="@CSS/CSSTEST.css" AnchorPane.bottomAnchor="13.0" AnchorPane.leftAnchor="-1.0" AnchorPane.topAnchor="34.0" />
                         <Pane layoutY="35.0" prefHeight="55.0" prefWidth="243.0" styleClass="left-text-button__background" stylesheets="@CSS/CSSTEST.css" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="35.0" />
                         <Pane layoutX="6.0" layoutY="34.0" prefHeight="54.0" prefWidth="205.0" styleClass="text-button__body" stylesheets="@CSS/CSSTEST.css" AnchorPane.bottomAnchor="13.0" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="99.0" AnchorPane.topAnchor="34.0" />
-                        <JFXButton alignment="BASELINE_LEFT" layoutX="7.0" layoutY="12.0" onAction="#exportFile" prefHeight="114.0" prefWidth="452.0" styleClass="text-button__text" stylesheets="@CSS/CSSTEST.css" text="  Export" textFill="#00e1ff">
+                        <JFXButton alignment="BASELINE_LEFT" layoutX="7.0" layoutY="12.0" onAction="#exportFile" prefHeight="114.0" prefWidth="452.0" styleClass="text-button__text" stylesheets="@CSS/CSSTEST.css" text="EXPORT" textFill="#00e1ff">
                            <font>
-                              <Font size="46.0" />
+                              <Font name="Oxanium Regular" size="46.0" />
                            </font>
                            <graphic>
                               <FontIcon iconColor="#00e1ff" iconLiteral="fas-file-export" />

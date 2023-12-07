@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Blend?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<Pane fx:id="currentPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="865.0" prefWidth="1536.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.MainMenu">
+   <children>
+      <ImageView fitHeight="865.0" fitWidth="1536.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../Images/MainMenuBackground.jpg" />
+         </image>
+      </ImageView>
+      <BorderPane prefHeight="866.0" prefWidth="1536.0">
+         <center>
+            <Pane prefHeight="855.0" prefWidth="1022.0" BorderPane.alignment="CENTER">
+               <children>
+                  <AnchorPane prefHeight="124.0" prefWidth="938.0" scaleShape="false">
+                     <children>
+                        <Pane layoutX="362.0" layoutY="22.0" prefHeight="40.0" prefWidth="500.0">
+                           <children>
+                              <Pane prefHeight="40.0" prefWidth="200.0" styleClass="main-menu-date-image" stylesheets="@CSS/CSSTEST.css">
+                                 <children>
+                                    <Pane layoutX="14.0" layoutY="5.0" prefHeight="30.0" prefWidth="30.0" styleClass="main-menu-date-image__label" stylesheets="@CSS/CSSTEST.css">
+                                       <children>
+                                          <Label alignment="BASELINE_CENTER" prefHeight="31.0" prefWidth="30.0" text="D" textFill="#05dff7">
+                                             <font>
+                                                <Font name="Oxanium Regular" size="27.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </Pane>
+                                    <Label alignment="BASELINE_CENTER" layoutX="38.0" layoutY="5.0" prefHeight="31.0" prefWidth="162.0" text="7.12.2023" textFill="#d15252">
+                                       <font>
+                                          <Font name="Oxanium Regular" size="27.0" />
+                                       </font>
+                                    </Label>
+                                    <Pane prefHeight="40.0" prefWidth="200.0" />
+                                 </children>
+                              </Pane>
+                              <Pane layoutX="198.0" prefHeight="40.0" prefWidth="91.0" styleClass="main-menu-date-image" stylesheets="@CSS/CSSTEST.css" />
+                              <Pane layoutX="288.0" prefHeight="40.0" prefWidth="170.0" styleClass="main-menu-date-image" stylesheets="@CSS/CSSTEST.css" />
+                              <Pane layoutX="457.0" prefHeight="40.0" prefWidth="44.0" styleClass="main-menu-date-image" stylesheets="@CSS/CSSTEST.css">
+                                 <children>
+                                    <FontIcon iconColor="#05dff7" iconLiteral="fab-usb" iconSize="20" layoutX="11.0" layoutY="28.0" />
+                                 </children>
+                              </Pane>
+                           </children>
+                        </Pane>
+                     </children></AnchorPane>
+                  <Pane layoutX="1.0" layoutY="122.0" prefHeight="170.0" prefWidth="871.0">
+                     <children>
+                        <TextField fx:id="searchWord" layoutX="145.0" layoutY="78.0" prefHeight="55.0" prefWidth="552.0" styleClass="main-menu-search-field" stylesheets="@CSS/CSSTEST.css">
+                           <font>
+                              <Font name="Oxanium Regular" size="23.0" />
+                           </font></TextField>
+                        <Button contentDisplay="RIGHT" layoutX="706.0" layoutY="79.0" onAction="#searchWord" prefHeight="53.0" prefWidth="146.0" styleClass="main-menu-image-button" stylesheets="@CSS/CSSTEST.css" text="Search">
+                           <graphic>
+                              <FontIcon iconColor="#05dff7" iconLiteral="fas-search" text="" />
+                           </graphic>
+                           <font>
+                              <Font name="Oxanium Regular" size="24.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </Pane>
+                  <AnchorPane layoutX="147.0" layoutY="330.0" prefHeight="463.0" prefWidth="703.0">
+                     <children>
+                        <AnchorPane fx:id="playGamesDescription" prefHeight="463.0" prefWidth="703.0">
+                           <children>
+                              <Pane layoutX="-9.0" layoutY="-3.0" prefHeight="385.0" prefWidth="738.0" styleClass="main-menu-button__image" stylesheets="@CSS/CSSTEST.css">
+                                 <children>
+                                    <ImageView fitHeight="382.0" fitWidth="703.0" layoutX="10.0" layoutY="2.0" pickOnBounds="true">
+                                       <image>
+                                          <Image url="@../../../Images/Play%20Games%20Image.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </Pane>
+                              <Pane layoutY="394.0" prefHeight="70.0" prefWidth="729.0" styleClass="main-menu-button__image-description__body" stylesheets="@CSS/CSSTEST.css">
+                                 <children>
+                                    <JFXTextArea editable="false" layoutX="6.0" layoutY="-3.0" prefHeight="73.0" prefWidth="712.0" styleClass="main-menu-button__image-description__text" stylesheets="@CSS/CSSTEST.css" text="Overcoming games will be a substantial challenge, may you pass with flying colours?">
+                                       <font>
+                                          <Font name="Oxanium Regular" size="24.0" />
+                                       </font>
+                                    </JFXTextArea>
+                                 </children>
+                              </Pane>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane fx:id="googleTranslateDescription" prefHeight="463.0" prefWidth="703.0">
+                           <children>
+                              <Pane layoutX="-9.0" layoutY="-3.0" prefHeight="385.0" prefWidth="738.0" styleClass="main-menu-button__image" stylesheets="@CSS/CSSTEST.css">
+                                 <children>
+                                    <ImageView fitHeight="382.0" fitWidth="703.0" layoutX="10.0" layoutY="2.0" pickOnBounds="true">
+                                       <image>
+                                          <Image url="@../../../Images/Translate%20Image.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </Pane>
+                              <Pane layoutY="394.0" prefHeight="70.0" prefWidth="729.0" styleClass="main-menu-button__image-description__body" stylesheets="@CSS/CSSTEST.css">
+                                 <children>
+                                    <JFXTextArea editable="false" layoutX="6.0" layoutY="-3.0" prefHeight="73.0" prefWidth="712.0" styleClass="main-menu-button__image-description__text" stylesheets="@CSS/CSSTEST.css" text="One can not own knowledge of all. Enter this dream and find salvation.&#10;">
+                                       <font>
+                                          <Font name="Oxanium Regular" size="24.0" />
+                                       </font>
+                                    </JFXTextArea>
+                                 </children>
+                              </Pane>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane fx:id="addWordDescription" prefHeight="463.0" prefWidth="703.0">
+                           <children>
+                              <Pane layoutX="-9.0" layoutY="-3.0" prefHeight="385.0" prefWidth="738.0" styleClass="main-menu-button__image" stylesheets="@CSS/CSSTEST.css">
+                                 <children>
+                                    <ImageView fitHeight="382.0" fitWidth="703.0" layoutX="10.0" layoutY="2.0" pickOnBounds="true">
+                                       <image>
+                                          <Image url="@../../../Images/AddWord%20Image.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </Pane>
+                              <Pane layoutY="394.0" prefHeight="70.0" prefWidth="729.0" styleClass="main-menu-button__image-description__body" stylesheets="@CSS/CSSTEST.css">
+                                 <children>
+                                    <JFXTextArea editable="false" layoutX="6.0" layoutY="-3.0" prefHeight="73.0" prefWidth="712.0" styleClass="main-menu-button__image-description__text" stylesheets="@CSS/CSSTEST.css" text="&quot;I gave you everything and yet it's never enough.&quot;&#10;Rodrigo Borgia - Assassin Creed Brotherhood">
+                                       <font>
+                                          <Font name="Oxanium Regular" size="24.0" />
+                                       </font>
+                                    </JFXTextArea>
+                                 </children>
+                              </Pane>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane fx:id="fileTranslatorDescription" prefHeight="463.0" prefWidth="703.0">
+                           <children>
+                              <Pane layoutX="-9.0" layoutY="-3.0" prefHeight="385.0" prefWidth="738.0" styleClass="main-menu-button__image" stylesheets="@CSS/CSSTEST.css">
+                                 <children>
+                                    <ImageView fitHeight="382.0" fitWidth="703.0" layoutX="10.0" layoutY="2.0" pickOnBounds="true">
+                                       <image>
+                                          <Image url="@../../../Images/FileTranslator%20Image.jpg" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </Pane>
+                              <Pane layoutY="394.0" prefHeight="70.0" prefWidth="729.0" styleClass="main-menu-button__image-description__body" stylesheets="@CSS/CSSTEST.css">
+                                 <children>
+                                    <JFXTextArea editable="false" layoutX="6.0" layoutY="-3.0" prefHeight="73.0" prefWidth="712.0" styleClass="main-menu-button__image-description__text" stylesheets="@CSS/CSSTEST.css" text="Bring me the offerings and I shall answer your desire, though it may not be what you think it is.">
+                                       <font>
+                                          <Font name="Oxanium Regular" size="24.0" />
+                                       </font>
+                                    </JFXTextArea>
+                                 </children>
+                              </Pane>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </Pane>
+         </center>
+         <left>
+            <AnchorPane prefHeight="866.0" prefWidth="597.0" BorderPane.alignment="CENTER">
+               <children>
+                  <ImageView fitHeight="31.0" fitWidth="147.0" layoutX="150.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../Images/PROTOCO6520.png" />
+                     </image>
+                  </ImageView>
+                  <Pane layoutX="136.0" opacity="0.76" prefHeight="866.0" prefWidth="446.0" styleClass="slide__background" stylesheets="@CSS/CSSTEST.css">
+                     <effect>
+                        <Blend mode="EXCLUSION" opacity="0.59" />
+                     </effect>
+                     <cursor>
+                        <Cursor fx:constant="W_RESIZE" />
+                     </cursor>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </Pane>
+                  <Pane layoutX="30.0" prefHeight="200.0" prefWidth="183.0">
+                     <children>
+                        <Text fill="#d9ff00" layoutX="120.0" stroke="#0026ff" strokeType="OUTSIDE" strokeWidth="2.0" text="I" wrappingWidth="53.29999923706055" y="200.0">
+                           <font>
+                              <Font name="Cyberpunk Regular" size="86.0" />
+                           </font>
+                        </Text>
+                        <Text fill="#d9ff00" layoutX="80.0" stroke="#0026ff" strokeType="OUTSIDE" strokeWidth="2.0" text="D" wrappingWidth="53.29999923706055" y="200.0">
+                           <font>
+                              <Font name="Cyberpunk Regular" size="86.0" />
+                           </font>
+                        </Text>
+                        <Text fill="#d9ff00" layoutX="140.0" stroke="#0026ff" strokeType="OUTSIDE" strokeWidth="2.0" text="C" wrappingWidth="53.29999923706055" y="200.0">
+                           <font>
+                              <Font name="Cyberpunk Regular" size="86.0" />
+                           </font>
+                        </Text>
+                        <Text fill="#d9ff00" layoutX="250.0" stroke="#0026ff" strokeType="OUTSIDE" strokeWidth="2.0" text="I" wrappingWidth="53.29999923706055" y="200.0">
+                           <font>
+                              <Font name="Cyberpunk Regular" size="86.0" />
+                           </font>
+                        </Text>
+                        <Text fill="#d9ff00" layoutX="210.0" stroke="#0026ff" strokeType="OUTSIDE" strokeWidth="2.0" text="T" wrappingWidth="53.29999923706055" y="200.0">
+                           <font>
+                              <Font name="Cyberpunk Regular" size="86.0" />
+                           </font>
+                        </Text>
+                        <Text fill="#d9ff00" layoutX="300.0" stroke="#0026ff" strokeType="OUTSIDE" strokeWidth="2.0" text="O" wrappingWidth="53.29999923706055" y="200.0">
+                           <font>
+                              <Font name="Cyberpunk Regular" size="86.0" />
+                           </font>
+                        </Text>
+                        <Text fill="#d9ff00" layoutX="350.0" stroke="#0026ff" strokeType="OUTSIDE" strokeWidth="2.0" text="N" wrappingWidth="53.29999923706055" y="200.0">
+                           <font>
+                              <Font name="Cyberpunk Regular" size="86.0" />
+                           </font>
+                        </Text>
+                        <Text fill="#d9ff00" layoutX="400.0" layoutY="5.0" stroke="#0026ff" strokeType="OUTSIDE" strokeWidth="2.0" text="A" wrappingWidth="53.29999923706055" y="200.0">
+                           <font>
+                              <Font name="Cyberpunk Regular" size="86.0" />
+                           </font>
+                        </Text>
+                        <Text fill="#d9ff00" layoutX="465.0" layoutY="5.0" stroke="#0026ff" strokeType="OUTSIDE" strokeWidth="2.0" text="R" wrappingWidth="53.29999923706055" y="200.0">
+                           <font>
+                              <Font name="Cyberpunk Regular" size="86.0" />
+                           </font>
+                        </Text>
+                        <Text fill="#d9ff00" layoutX="510.0" layoutY="5.0" stroke="#0026ff" strokeType="OUTSIDE" strokeWidth="2.0" text="Y" wrappingWidth="53.29999923706055" y="200.0">
+                           <font>
+                              <Font name="Cyberpunk Regular" size="86.0" />
+                           </font>
+                        </Text>
+                        <Text fill="#0d1fea" layoutX="351.0" layoutY="60.0" stroke="#0026ff" strokeType="OUTSIDE" strokeWidth="2.0" text="2 0 7 7" wrappingWidth="152.5000114440918" y="200.0">
+                           <font>
+                              <Font name="Blender Pro Book" size="47.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </Pane>
+                  <AnchorPane prefHeight="866.0" prefWidth="597.0">
+                     <children>
+                        <Pane layoutX="152.0" layoutY="423.0" prefHeight="54.0" prefWidth="421.0" styleClass="main-menu-button__background" stylesheets="@CSS/CSSTEST.css">
+                           <children>
+                              <Label layoutX="10.0" prefHeight="53.0" prefWidth="412.0" styleClass="main-menu-button__text" stylesheets="@CSS/CSSTEST.css" text="PLAY GAMES" textFill="#cfcc02">
+                                 <font>
+                                    <Font name="Oxanium Regular" size="32.0" />
+                                 </font>
+                              </Label>
+                              <ImageView fitHeight="50.0" fitWidth="51.0" layoutX="349.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true" />
+                              <Button fx:id="playGamesButton" mnemonicParsing="false" onAction="#switchToGame" prefHeight="53.0" prefWidth="415.0" styleClass="main-menu-button__body">
+                                 <font>
+                                    <Font size="1.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </Pane>
+                        <Pane layoutX="152.0" layoutY="490.0" prefHeight="54.0" prefWidth="421.0" styleClass="main-menu-button__background" stylesheets="@CSS/CSSTEST.css">
+                           <children>
+                              <Label layoutX="10.0" prefHeight="53.0" prefWidth="412.0" styleClass="main-menu-button__text" stylesheets="@CSS/CSSTEST.css" text="GOOGLE TRANSLATE" textFill="#cfcc02">
+                                 <font>
+                                    <Font name="Oxanium Regular" size="32.0" />
+                                 </font>
+                              </Label>
+                              <ImageView fitHeight="50.0" fitWidth="51.0" layoutX="349.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true" />
+                              <Button fx:id="googleTranslateButton" mnemonicParsing="false" onAction="#switchToTranslator" prefHeight="53.0" prefWidth="415.0" styleClass="main-menu-button__body">
+                                 <font>
+                                    <Font size="1.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </Pane>
+                        <Pane layoutX="152.0" layoutY="560.0" prefHeight="54.0" prefWidth="421.0" styleClass="main-menu-button__background" stylesheets="@CSS/CSSTEST.css">
+                           <children>
+                              <Label layoutX="10.0" prefHeight="53.0" prefWidth="412.0" styleClass="main-menu-button__text" stylesheets="@CSS/CSSTEST.css" text="ADD WORD" textFill="#cfcc02">
+                                 <font>
+                                    <Font name="Oxanium Regular" size="32.0" />
+                                 </font>
+                              </Label>
+                              <ImageView fitHeight="50.0" fitWidth="51.0" layoutX="349.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true" />
+                              <Button fx:id="addWordButton" mnemonicParsing="false" onAction="#switchToAddWord" prefHeight="53.0" prefWidth="415.0" styleClass="main-menu-button__body">
+                                 <font>
+                                    <Font size="1.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </Pane>
+                        <Pane layoutX="152.0" layoutY="630.0" prefHeight="54.0" prefWidth="421.0" styleClass="main-menu-button__background" stylesheets="@CSS/CSSTEST.css">
+                           <children>
+                              <Label layoutX="10.0" prefHeight="53.0" prefWidth="412.0" styleClass="main-menu-button__text" stylesheets="@CSS/CSSTEST.css" text="FILE TRANSLATOR" textFill="#cfcc02">
+                                 <font>
+                                    <Font name="Oxanium Regular" size="32.0" />
+                                 </font>
+                              </Label>
+                              <ImageView fitHeight="50.0" fitWidth="51.0" layoutX="349.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true" />
+                              <Button fx:id="fileTranslatorButton" mnemonicParsing="false" onAction="#switchToFileTranslator" prefHeight="53.0" prefWidth="415.0" styleClass="main-menu-button__body">
+                                 <font>
+                                    <Font size="1.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </Pane>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+         </left>
+      </BorderPane>
+   </children>
+
+</Pane>
